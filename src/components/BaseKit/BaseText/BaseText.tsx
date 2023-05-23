@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextStyle } from 'react-native';
-import { styles } from './styles';
+import { makeStyle } from '../../../hooks/makeStyle';
 type IBaseText = {
   title?: string | React.ReactNode;
   children?: React.ReactNode;
@@ -8,6 +8,16 @@ type IBaseText = {
   onPress?: () => void;
   numberOfLines?: number;
 };
+const useStyle = (props: any) =>
+  makeStyle((theme) => {
+    return {
+      default: {
+        fontSize: theme?.base.size?.primary,
+        fontFamily: theme?.base.font?.[500],
+        ...props,
+      },
+    };
+  })();
 
 const BaseText: React.FC<IBaseText> = ({
   title,
@@ -16,17 +26,10 @@ const BaseText: React.FC<IBaseText> = ({
   onPress,
   numberOfLines,
 }) => {
+  const styles = useStyle(style);
   const props = { numberOfLines, onPress };
   return (
-    <Text
-      style={{ ...styles.default, ...style }}
-      {...props}
-      // onPress={() => {
-      //   if (onPress) {
-      //     onPress();
-      //   }
-      // }}
-    >
+    <Text style={styles.default} {...props}>
       {title || children}
     </Text>
   );

@@ -1,7 +1,8 @@
-import theme from '@/theme';
-import Icons from '@/utils/icons';
 import React from 'react';
-import {TextStyle} from 'react-native';
+import { TextStyle } from 'react-native';
+import { createIconSet } from 'react-native-vector-icons';
+import customFontGlyph from './icons.json';
+
 export type IconsId =
   | 'icon_-disconnectbold'
   | 'icon_-disconnectlinear'
@@ -108,12 +109,10 @@ type IIcon = {
   onPress?: () => void;
 };
 
-const Icon: React.FC<IIcon> = ({
-  style,
-  size = theme.size[12],
-  name,
-  onPress
-}) => {
+const Icons = createIconSet(customFontGlyph, 'icons', 'icons.ttf');
+export const IconFont = { font: require('./icons.ttf') };
+
+const Icon: React.FC<IIcon> = ({ style, size = 12, name, onPress }) => {
   return (
     <Icons
       pointerEvents="none"
@@ -125,7 +124,7 @@ const Icon: React.FC<IIcon> = ({
         }
       }}
       style={{
-        ...style
+        ...style,
       }}
     />
   );

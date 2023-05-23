@@ -15,6 +15,7 @@ const useStyle = (props: any) =>
   makeStyle((theme) => {
     return {
       divider: {
+        ...props,
         backgroundColor:
           props.backgroundColor || theme?.base.colors?.['--color-tangerine'],
       },
@@ -29,19 +30,20 @@ const Divider: FC<TDivider> = ({
   style,
   size = 1,
 }) => {
-  const styles = useStyle({ backgroundColor: color });
-
+  const styles = useStyle({
+    backgroundColor: color,
+    marginTop: type === 'h' ? spaccingTop : 0,
+    marginBottom: type === 'h' ? spaccingBottom : 0,
+    marginLeft: type !== 'h' ? spaccingBottom : 0,
+    marginRight: type !== 'h' ? spaccingBottom : 0,
+    width: type === 'h' ? '100%' : size,
+    height: type === 'h' ? size : '100%',
+    ...style,
+  });
   return (
     <View
       style={{
-        marginTop: type == 'h' ? spaccingTop : 0,
-        marginBottom: type == 'h' ? spaccingBottom : 0,
-        marginLeft: type != 'h' ? spaccingBottom : 0,
-        marginRight: type != 'h' ? spaccingBottom : 0,
-        width: type == 'h' ? '100%' : size,
-        height: type == 'h' ? size : '100%',
         ...styles?.divider,
-        ...style,
       }}
     />
   );

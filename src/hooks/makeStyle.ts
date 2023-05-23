@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native';
-import { TThemeStructure, useTheme } from '../contexts/themeContext';
+import { useTheme, type TThemeStructure } from '../contexts/themeContext';
 
 //content from @Nexapp/react-native-theme
 export interface Style {

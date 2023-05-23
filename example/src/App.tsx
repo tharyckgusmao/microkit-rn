@@ -1,43 +1,60 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import {
-  Box,
-  Divider,
-  makeStyle,
-  multiply,
-  ThemeProvider,
-} from 'react-native-microkit-rn';
-
+import { StyleSheet } from 'react-native';
+import { IconFont, ThemeProvider } from 'react-native-microkit-rn';
+import Icons from './Icons';
+const Stack = createNativeStackNavigator();
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [fontsLoaded] = useFonts({
+    'Montserrat-Regular': require('../assets/fonts/ttf/Montserrat-Regular.ttf'),
+    'Montserrat-Medium': require('../assets/fonts/ttf/Montserrat-Medium.ttf'),
+    'Montserrat-SemiBold': require('../assets/fonts/ttf/Montserrat-SemiBold.ttf'),
+    'Montserrat-Bold': require('../assets/fonts/ttf/Montserrat-Bold.ttf'),
+    'Montserrat-MediumItalic': require('../assets/fonts/ttf/Montserrat-MediumItalic.ttf'),
+    'Montserrat-SemiBoldItalic': require('../assets/fonts/ttf/Montserrat-SemiBoldItalic.ttf'),
+    'icons': IconFont.font,
+  });
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <ThemeProvider>
-      <View style={styles.container}>
-        <Text>Result: {result}</Text>
-        <Box column style={{ width: 300 }}>
-          <Text>Result: {result}</Text>
-          <Divider type="h" size={6} spaccingBottom={10} spaccingTop={10} />
-        </Box>
-      </View>
+    <ThemeProvider
+      initialTheme={{
+        base: {
+          font: {
+            'regular': 'Montserrat-Regular',
+            'medium': 'Montserrat-Medium',
+            'semibold': 'Montserrat-SemiBold',
+            'bold': 'Montserrat-Bold',
+            'medium_italic': 'Montserrat-MediumItalic',
+            'semibold_italic': 'Montserrat-SemiBoldItalic',
+            '400': 'Montserrat-Regular',
+            '500': 'Montserrat-Medium',
+            '600': 'Montserrat-SemiBold',
+            '700': 'Montserrat-Bold',
+            '800': 'Montserrat-Bold',
+          },
+        },
+        components: {},
+      }}
+    >
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            gestureEnabled: false,
+          }}
+          initialRouteName={'Icons'}
+        >
+          <Stack.Screen
+            name="Icons"
+            component={Icons}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
