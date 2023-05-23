@@ -1,0 +1,292 @@
+@font-face {
+    font-family: "icons";
+    src: url("./icons.ttf?b472ec1ffa3e4d95b0f361f6517151e4") format("truetype");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon_addbold:before {
+    content: "\f101";
+}
+.icon-icon_adduserbold:before {
+    content: "\f102";
+}
+.icon-icon_adduserlinear:before {
+    content: "\f103";
+}
+.icon-icon_alert:before {
+    content: "\f104";
+}
+.icon-icon_arrowcircleleftbold:before {
+    content: "\f105";
+}
+.icon-icon_arrowdownbold:before {
+    content: "\f106";
+}
+.icon-icon_arrowleftbold:before {
+    content: "\f107";
+}
+.icon-icon_arrowrightbold:before {
+    content: "\f108";
+}
+.icon-icon_arrowupbold:before {
+    content: "\f109";
+}
+.icon-icon_calendarbold:before {
+    content: "\f10a";
+}
+.icon-icon_calendarlinear:before {
+    content: "\f10b";
+}
+.icon-icon_checkbold:before {
+    content: "\f10c";
+}
+.icon-icon_checkcirclebold:before {
+    content: "\f10d";
+}
+.icon-icon_closebold:before {
+    content: "\f10e";
+}
+.icon-icon_disconnectbold:before {
+    content: "\f10f";
+}
+.icon-icon_disconnectlinear:before {
+    content: "\f110";
+}
+.icon-icon_editlinear:before {
+    content: "\f111";
+}
+.icon-icon_feedcontentbold:before {
+    content: "\f112";
+}
+.icon-icon_feedcontentlinear:before {
+    content: "\f113";
+}
+.icon-icon_graduatebold:before {
+    content: "\f114";
+}
+.icon-icon_graduatelinear:before {
+    content: "\f115";
+}
+.icon-icon_groupchatlinear:before {
+    content: "\f116";
+}
+.icon-icon_helpbold:before {
+    content: "\f117";
+}
+.icon-icon_helplinear:before {
+    content: "\f118";
+}
+.icon-icon_hidebold:before {
+    content: "\f119";
+}
+.icon-icon_inboxlinear:before {
+    content: "\f11a";
+}
+.icon-icon_informationbold:before {
+    content: "\f11b";
+}
+.icon-icon_informationlinear:before {
+    content: "\f11c";
+}
+.icon-icon_interestbold:before {
+    content: "\f11d";
+}
+.icon-icon_interestlinear:before {
+    content: "\f11e";
+}
+.icon-icon_keybold:before {
+    content: "\f11f";
+}
+.icon-icon_keylinear:before {
+    content: "\f120";
+}
+.icon-icon_likebold:before {
+    content: "\f121";
+}
+.icon-icon_likelinear:before {
+    content: "\f122";
+}
+.icon-icon_linkcirclebold:before {
+    content: "\f123";
+}
+.icon-icon_linkcirclelinear:before {
+    content: "\f124";
+}
+.icon-icon_listsavebold:before {
+    content: "\f125";
+}
+.icon-icon_listsavelinear:before {
+    content: "\f126";
+}
+.icon-icon_lockbold:before {
+    content: "\f127";
+}
+.icon-icon_locklinear:before {
+    content: "\f128";
+}
+.icon-icon_logoutbold:before {
+    content: "\f129";
+}
+.icon-icon_mailbold:before {
+    content: "\f12a";
+}
+.icon-icon_mailbox:before {
+    content: "\f12b";
+}
+.icon-icon_maillinear:before {
+    content: "\f12c";
+}
+.icon-icon_mailnotification:before {
+    content: "\f12d";
+}
+.icon-icon_mailsendllinear:before {
+    content: "\f12e";
+}
+.icon-icon_mailstarlinear:before {
+    content: "\f12f";
+}
+.icon-icon_mailverificationlinear:before {
+    content: "\f130";
+}
+.icon-icon_messagesbold:before {
+    content: "\f131";
+}
+.icon-icon_messageslinear:before {
+    content: "\f132";
+}
+.icon-icon_messagetextlinear:before {
+    content: "\f133";
+}
+.icon-icon_monitorbold:before {
+    content: "\f134";
+}
+.icon-icon_monitorlinear:before {
+    content: "\f135";
+}
+.icon-icon_morebold:before {
+    content: "\f136";
+}
+.icon-icon_moresquarebold:before {
+    content: "\f137";
+}
+.icon-icon_msgcodelinear:before {
+    content: "\f138";
+}
+.icon-icon_notificationlinear:before {
+    content: "\f139";
+}
+.icon-icon_phonebold:before {
+    content: "\f13a";
+}
+.icon-icon_phonelinear:before {
+    content: "\f13b";
+}
+.icon-icon_profilebold:before {
+    content: "\f13c";
+}
+.icon-icon_profiledeletelinear:before {
+    content: "\f13d";
+}
+.icon-icon_profilelinear:before {
+    content: "\f13e";
+}
+.icon-icon_readerlinear:before {
+    content: "\f13f";
+}
+.icon-icon_readview:before {
+    content: "\f140";
+}
+.icon-icon_removesavebold:before {
+    content: "\f141";
+}
+.icon-icon_savebold:before {
+    content: "\f142";
+}
+.icon-icon_saveline:before {
+    content: "\f143";
+}
+.icon-icon_searchlinear:before {
+    content: "\f144";
+}
+.icon-icon_sendbold:before {
+    content: "\f145";
+}
+.icon-icon_sendlinear:before {
+    content: "\f146";
+}
+.icon-icon_settingsbold:before {
+    content: "\f147";
+}
+.icon-icon_settingslinear:before {
+    content: "\f148";
+}
+.icon-icon_sharebold:before {
+    content: "\f149";
+}
+.icon-icon_shareilnear:before {
+    content: "\f14a";
+}
+.icon-icon_shieldsecuritybold:before {
+    content: "\f14b";
+}
+.icon-icon_shieldsecuritylinear:before {
+    content: "\f14c";
+}
+.icon-icon_showbold:before {
+    content: "\f14d";
+}
+.icon-icon_starbold:before {
+    content: "\f14e";
+}
+.icon-icon_starlinear:before {
+    content: "\f14f";
+}
+.icon-icon_timerbold:before {
+    content: "\f150";
+}
+.icon-icon_timerlinear:before {
+    content: "\f151";
+}
+.icon-icon_trashbold:before {
+    content: "\f152";
+}
+.icon-icon_trashlinear:before {
+    content: "\f153";
+}
+.icon-icon_universitybold:before {
+    content: "\f154";
+}
+.icon-icon_universitylinear:before {
+    content: "\f155";
+}
+.icon-icon_updatelinear:before {
+    content: "\f156";
+}
+.icon-icon_userbold:before {
+    content: "\f157";
+}
+.icon-icon_userlinear:before {
+    content: "\f158";
+}
+.icon-icon_usersbold:before {
+    content: "\f159";
+}
+.icon-icon_userslinear:before {
+    content: "\f15a";
+}
+.icon-icon_verifybold:before {
+    content: "\f15b";
+}
+.icon-icon_whatsapplinear:before {
+    content: "\f15c";
+}

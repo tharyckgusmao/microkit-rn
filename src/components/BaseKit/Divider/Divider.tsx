@@ -17,7 +17,7 @@ const useStyle = (props: any) =>
       divider: {
         ...props,
         backgroundColor:
-          props.backgroundColor || theme?.base.colors?.['--color-tangerine'],
+          props.backgroundColor || theme?.base.colors?.['--color-base_silver'],
       },
     };
   })();

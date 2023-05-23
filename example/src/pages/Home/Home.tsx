@@ -1,80 +1,60 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
-import {DEFAULTSTYLES} from '../../utils/utils/styles';
-import {useNavigation} from '@react-navigation/native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {FONT_FAMILY_BOLD, SIZES} from '../../utils/utils/constants';
-
-type Props = {};
+import { useNavigation } from '@react-navigation/native';
+import { Box, Divider, Icon, makeStyle } from 'react-native-microkit-rn';
 
 const routes = [
   {
-    title: '🎠  Carousel Parallax',
-    route: 'CarouselParallax',
-  },
-  {
-    title: '🎯  Roulette',
-    route: 'Roullete',
-  },
-  {
-    title: '🎫   Events',
-    route: 'EventsCalendar',
-  },
-  {
-    title: '🐍  Rope Snap',
-    route: 'RopeSnap',
-  },
-  {
-    title: '💠  Mesh',
-    route: 'Mesh',
-  },
-  {
-    title: '🪨 Nature LP',
-    route: 'Naturelp',
-  },
-  {
-    title: '🏺 Rotate 360',
-    route: 'Rotate360',
-  },
-  {
-    title: '📔 Book Gallery',
-    route: 'BookGallery',
-  },
-  {
-    title: '🧠 Memory Game',
-    route: 'MemoryGame',
-  },
-  {
-    title: '📊 Skia + Visx',
-    route: 'Visx',
-  },
-  {
-    title: '🌊 Wave',
-    route: 'Wave',
-  },
-  {
-    title: '🎆 Shaders',
-    route: 'Shaders',
-  },
-  {
-    title: '⌒ Sin and Cos',
-    route: 'SinCos',
+    title: 'Icons',
+    route: 'Icons',
   },
 ];
-const Home = (props: Props) => {
-  const {navigate} = useNavigation();
+
+const useStyle = makeStyle((theme) => {
+  return {
+    container: theme?.base?.layout?.container,
+    routeItem: {
+      padding: theme?.base.spacing?.['04'],
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    title: {
+      fontFamily: theme?.base?.font?.['500'],
+      color: '#000',
+      fontSize: theme?.base?.size?.primary,
+      textTransform: 'uppercase',
+    },
+  };
+});
+
+const Home = () => {
+  const { navigate } = useNavigation();
+  const styles = useStyle();
   return (
-    <ScrollView style={DEFAULTSTYLES.containerPadding}>
-      {routes.map(e => {
+    <ScrollView style={styles.container}>
+      {routes.map((e, k) => {
         return (
-          <TouchableOpacity
-            activeOpacity={0.6}
-            onPress={() => {
-              navigate(e.route);
-            }}
-            style={styles.routeItem}>
-            <Text style={styles.title}>{e.title}</Text>
-          </TouchableOpacity>
+          <>
+            <TouchableOpacity
+              activeOpacity={0.6}
+              onPress={() => {
+                navigate(e.route);
+              }}
+              style={styles.routeItem}
+              key={k}
+            >
+              <Text style={styles.title}>{e.title}</Text>
+              <Icon name="icon_arrowrightbold" />
+            </TouchableOpacity>
+            <Divider type="h" spaccingTop={10} spaccingBottom={10} />
+          </>
         );
       })}
     </ScrollView>
@@ -82,17 +62,3 @@ const Home = (props: Props) => {
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  routeItem: {
-    padding: SIZES.size_10,
-    borderBottomColor: '#d9d9d9',
-    borderBottomWidth: 1,
-  },
-  title: {
-    fontFamily: FONT_FAMILY_BOLD,
-    color: '#000',
-    fontSize: SIZES.size_14,
-    textTransform: 'uppercase',
-  },
-});
