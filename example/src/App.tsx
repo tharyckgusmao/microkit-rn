@@ -1,7 +1,13 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-microkit-rn';
+import {
+  Box,
+  Divider,
+  makeStyle,
+  multiply,
+  ThemeProvider,
+} from 'react-native-microkit-rn';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
@@ -11,9 +17,15 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <ThemeProvider>
+      <View style={styles.container}>
+        <Text>Result: {result}</Text>
+        <Box column style={{ width: 300 }}>
+          <Text>Result: {result}</Text>
+          <Divider type="h" size={6} spaccingBottom={10} spaccingTop={10} />
+        </Box>
+      </View>
+    </ThemeProvider>
   );
 }
 
