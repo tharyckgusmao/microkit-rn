@@ -1,26 +1,25 @@
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Box, Divider, Icon, makeStyle } from 'react-native-microkit-rn';
+import type { APPTheme } from 'example-old/src/App';
+import React from 'react';
+import { ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Divider, Icon, makeStyle } from 'react-native-microkit-rn';
 
 const routes = [
   {
     title: 'Icons',
     route: 'Icons',
   },
+  {
+    title: 'Input',
+    route: 'Input',
+  },
 ];
 
-const useStyle = makeStyle((theme) => {
+const useStyle = makeStyle((theme: APPTheme) => {
   return {
-    container: theme?.base?.layout?.container,
+    container: { ...theme?.base?.layout?.container },
     routeItem: {
-      padding: theme?.base.spacing?.['04'],
+      padding: theme?.base?.spacing?.['04'],
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -37,6 +36,7 @@ const useStyle = makeStyle((theme) => {
 const Home = () => {
   const { navigate } = useNavigation();
   const styles = useStyle();
+
   return (
     <ScrollView style={styles.container}>
       {routes.map((e, k) => {

@@ -57,7 +57,7 @@
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
     "@types/react": "~17.0.21",
-    "@types/react-native": "0.70.0",
+    "@types/react-native": "0.72.1",
     "commitlint": "^17.0.2",
     "del-cli": "^5.0.0",
     "eslint": "^8.4.1",
@@ -73,12 +73,13 @@
     "typescript": "^4.5.2"
   },
   "resolutions": {
-    "@types/react": "17.0.21"
+    "@types/react": "^17"
   },
   "peerDependencies": {
+    "@expo/vector-icons": "13.0.0",
     "react": "*",
     "react-native": "*",
-    "@expo/vector-icons": "13.0.0"
+    "react-native-reanimated": "2.14.4"
   },
   "engines": {
     "node": ">= 16.0.0"
@@ -88,6 +89,7 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
+      "<rootDir>/example-old/node_modules",
       "<rootDir>/lib/"
     ]
   },
@@ -158,6 +160,7 @@
     ]
   },
   "dependencies": {
+    "imask": "6.6.1",
     "react-native-vector-icons": "9.2.0"
   }
 }

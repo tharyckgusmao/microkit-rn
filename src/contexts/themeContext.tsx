@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { TextStyle, ViewStyle } from 'react-native';
 import type { Style } from '../hooks/makeStyle';
 
 let colorsDefault = {
@@ -36,53 +35,23 @@ let spacingDefault = {
   '07': 32,
 };
 
-export type TColors = {
-  [key: string]: string;
+export type TThemeStructure<T> = {
+  components?: Style<string>;
+  base?: T;
 };
-
-export type TThemeStructure = {
-  components: {
-    [key: string]: Style | undefined;
-  };
-  base: {
-    font?: {
-      'regular'?: string;
-      'medium'?: string;
-      'semibold'?: string;
-      'bold'?: string;
-      'medium_italic'?: string;
-      'semibold_italic'?: string;
-      '400'?: string;
-      '500'?: string;
-      '600'?: string;
-      '700'?: string;
-      '800'?: string;
-    };
-    spacing?: {
-      [key: string]: number;
-    };
-    colors?: TColors;
-    size?: { [key: string | number]: number };
-    layout?: {
-      [key: string]: Style | undefined;
-    };
-  };
-};
-
-type ThemeContextType = {
-  theme: TThemeStructure;
-  setChangeTheme: (theme: TThemeStructure) => void;
-  uuid?: string;
+let base = {
+  colors: colorsDefault,
+  size: sizesDefault,
+  spacing: spacingDefault,
 };
 export const defaultTheme = {
-  base: {
-    colors: colorsDefault,
-    size: sizesDefault,
-    spacing: spacingDefault,
-    font: {},
-    layout: {},
-  },
-  components: {},
+  base,
+};
+export type TThemeBase = TThemeStructure<typeof base>;
+
+type ThemeContextType = {
+  theme: TThemeBase;
+  uuid?: string;
 };
 
 const ThemeContext = createContext<Partial<ThemeContextType>>({
@@ -91,22 +60,15 @@ const ThemeContext = createContext<Partial<ThemeContextType>>({
 
 type TThemeProvider = {
   children?: React.ReactNode;
-  initialTheme?: TThemeStructure;
+  initialTheme?: TThemeStructure<typeof base> | any;
 };
 
 const ThemeProvider = ({ children, initialTheme }: TThemeProvider) => {
-  const [theme, setTheme] = useState(initialTheme || defaultTheme);
-  const [uuid, setUuid] = useState('1');
-  const setChangeTheme = (custom: TThemeStructure) => {
-    setTheme({
-      ...theme,
-      ...custom,
-    });
-    setUuid(Math.random().toString(16).substring(4));
-  };
+  const [theme] = useState(initialTheme);
+  const [uuid] = useState(Math.random().toString(16).substring(4));
 
   return (
-    <ThemeContext.Provider value={{ setChangeTheme, uuid, theme }}>
+    <ThemeContext.Provider value={{ uuid, theme }}>
       {children}
     </ThemeContext.Provider>
   );

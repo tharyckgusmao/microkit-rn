@@ -1,17 +1,12 @@
 import { useMemo } from 'react';
 import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native';
-import { useTheme, type TThemeStructure } from '../contexts/themeContext';
+import { useTheme } from '../contexts/themeContext';
 
-//content from @Nexapp/react-native-theme
-export interface Style {
-  [key: string]: ViewStyle | TextStyle | ImageStyle;
-}
+export type Style<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
 export const makeStyle =
-  <T extends Style>(
-    apply: (theme: TThemeStructure | undefined) => T
-  ): (() => T) =>
+  <T extends Style<T>>(apply: (theme: any) => T): (() => T) =>
   (): T => {
     const { theme } = useTheme();
 

@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import { ColorValue, View, ViewStyle } from 'react-native';
+import type { TThemeBase } from 'src/contexts/themeContext';
 import { makeStyle } from '../../../hooks/makeStyle';
 type TDivider = {
   type?: 'h' | 'v';
@@ -12,12 +13,12 @@ type TDivider = {
 };
 
 const useStyle = (props: any) =>
-  makeStyle((theme) => {
+  makeStyle((theme: TThemeBase) => {
     return {
       divider: {
         ...props,
         backgroundColor:
-          props.backgroundColor || theme?.base.colors?.['--color-base_silver'],
+          props.backgroundColor || theme?.base?.colors['--color-base_silver'],
       },
     };
   })();
@@ -40,6 +41,7 @@ const Divider: FC<TDivider> = ({
     height: type === 'h' ? size : '100%',
     ...style,
   });
+
   return (
     <View
       style={{
