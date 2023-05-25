@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import * as React from 'react';
 import {
   IconFont,
+  Style,
   TThemeStructure,
   ThemeProvider,
   defaultTheme,
@@ -11,6 +12,7 @@ import {
 import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
+import merge from 'lodash.merge';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -35,63 +37,79 @@ let base = {
   },
 };
 let inputStyles = {
-  suffixText: {
-    color: base.colors['--color-base_silver'],
-  },
-  errorInput: {
-    color: base.colors['--color-fire_opal'],
-  },
-  error: {
-    borderColor: base.colors['--color-fire_opal'],
-    color: base.colors['--color-fire_opal'],
-  },
-  empty: {
-    fontFamily: base.font.medium,
-  },
-  typing: {
-    fontFamily: base.font.semibold,
-    color: base.colors['--color-base_eerieblack'],
-    borderColor: base.colors['--color-base_eerieblack'],
-  },
-  filled: {
-    fontFamily: base.font.semibold,
-    borderColor: base.colors['--color-base_eerieblack'],
-    color: base.colors['--color-base_eerieblack'],
-  },
-  disabled: {
-    backgroundColor: base.colors['--color-base_platinum'],
-  },
-  icon: {
-    color: base.colors['--color-base_silver'],
-  },
-  iconFilled: {
-    color: base.colors['--color-base_eerieblack'],
-  },
-  iconError: {
-    color: base.colors['--color-fire_opal'],
-  },
-  placeholder: {
-    fontFamily: base.font.regular,
-    fontSize: 13,
-    color: base.colors['--color-base_silver'],
-    transform: [
-      {
-        translateY: -2,
-      },
-    ],
-  },
-  charCount: {
-    bottom: 8,
-    right: 8,
-    fontFamily: base.font.regular,
-    fontSize: 10,
-    position: 'absolute',
-    color: base.colors['--color-base_lightgray'],
-    zIndex: 10,
+  input: {
+    ctn: {
+      borderTopLeftRadius: 8,
+      borderTopRightRadius: 8,
+      borderBottomRightRadius: 8,
+      borderBottomLeftRadius: 8,
+    },
+    suffixText: {
+      color: base.colors['--color-base_silver'],
+    },
+    errorInput: {
+      color: base.colors['--color-fire_opal'],
+    },
+    error: {
+      borderColor: base.colors['--color-fire_opal'],
+      color: base.colors['--color-fire_opal'],
+    },
+    empty: {
+      fontFamily: base.font.medium,
+    },
+    typing: {
+      fontFamily: base.font.semibold,
+      color: base.colors['--color-base_eerieblack'],
+      borderColor: base.colors['--color-base_eerieblack'],
+    },
+    filled: {
+      fontFamily: base.font.semibold,
+      borderColor: base.colors['--color-base_eerieblack'],
+      color: base.colors['--color-base_eerieblack'],
+    },
+    disabled: {
+      backgroundColor: base.colors['--color-base_platinum'],
+    },
+    icon: {
+      color: base.colors['--color-base_silver'],
+    },
+    iconFilled: {
+      color: base.colors['--color-base_eerieblack'],
+    },
+    iconError: {
+      color: base.colors['--color-fire_opal'],
+    },
+    placeholder: {
+      fontFamily: base.font.regular,
+      fontSize: 13,
+      color: base.colors['--color-base_silver'],
+      transform: [
+        {
+          translateY: -2,
+        },
+      ],
+    },
+    placeholderColor: {
+      color: base.colors['--color-base_silver'],
+    },
+    charCount: {
+      bottom: 8,
+      right: 8,
+      fontFamily: base.font.regular,
+      fontSize: 10,
+      position: 'absolute',
+      color: base.colors['--color-base_lightgray'],
+      zIndex: 10,
+    },
+
+    errorLabel: {
+      fontFamily: base.font[600],
+      color: base.colors['--color-fire_opal'],
+    },
   },
 };
+let components = merge(defaultTheme.components, inputStyles);
 
-let components = { ...defaultTheme.components, ...inputStyles };
 let theme = { base, components };
 
 export type APPTheme = TThemeStructure<typeof base, typeof components>;
