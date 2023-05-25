@@ -35,14 +35,25 @@ let base = {
     '700': 'Montserrat-Bold',
     '800': 'Montserrat-Bold',
   },
+  size: {
+    small: 10,
+    regular: 12,
+    primary: 14,
+    medium: 16,
+  },
 };
 let inputStyles = {
   input: {
     ctn: {
+      fontFamily: base.font.regular,
+
       borderTopLeftRadius: 8,
       borderTopRightRadius: 8,
       borderBottomRightRadius: 8,
       borderBottomLeftRadius: 8,
+      height: 44,
+      paddingRight: 14,
+      paddingLeft: 14,
     },
     suffixText: {
       color: base.colors['--color-base_silver'],
@@ -74,7 +85,7 @@ let inputStyles = {
       color: base.colors['--color-base_silver'],
     },
     iconFilled: {
-      color: base.colors['--color-base_eerieblack'],
+      color: base.colors['--color-base_sonicsilver'],
     },
     iconError: {
       color: base.colors['--color-fire_opal'],
@@ -105,6 +116,13 @@ let inputStyles = {
     errorLabel: {
       fontFamily: base.font[600],
       color: base.colors['--color-fire_opal'],
+    },
+  },
+  label: {
+    title: {
+      fontFamily: base.font.regular,
+      fontSize: base.size.regular,
+      color: base.colors['--color-base_eerieblack'],
     },
   },
 };

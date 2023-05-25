@@ -4,6 +4,7 @@ import {
   style as styleInput,
   styleInputError,
 } from '../components/Inputs/Input/styles';
+import { style as styleLabel } from '../components/Inputs/Label/styles';
 
 let colorsDefault = {
   '--color-white': '#ffffff',
@@ -50,6 +51,7 @@ let base = {
 };
 let components = {
   input: { ...styleInput, ...styleInputError },
+  label: { ...styleLabel },
 };
 export const defaultTheme = {
   base,

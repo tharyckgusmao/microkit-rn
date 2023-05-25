@@ -3,7 +3,9 @@ import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native';
 import { useTheme } from '../contexts/themeContext';
 
-export type Style<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
+export type Style<T> = {
+  [P in keyof T]: ViewStyle | TextStyle | ImageStyle | undefined;
+};
 
 export const makeStyle =
   <T extends Style<T>>(apply: (theme: any) => T): (() => T) =>

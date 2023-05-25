@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { Control, FieldValues, useController } from 'react-hook-form';
+import { Control, useController } from 'react-hook-form';
 import React, {
   KeyboardTypeOptions,
   StyleSheet,
@@ -18,13 +18,8 @@ import React, {
   ViewStyle,
 } from 'react-native';
 
+import type { FormValues } from 'example/src/pages/Input/Input';
 import IMask from 'imask';
-import BaseText from '../../BaseKit/BaseText/BaseText';
-import Box from '../../BaseKit/Box/Box';
-import Icon from '../../BaseKit/Icon/Icon';
-import type { IconsId } from '../../BaseKit/Icon/generated/icons';
-import { masks } from './helpers';
-import { useStyle } from './styles';
 import Animated, {
   FadeInUp,
   FadeOutUp,
@@ -33,10 +28,18 @@ import Animated, {
   useDerivedValue,
   withTiming,
 } from 'react-native-reanimated';
+import BaseText from '../../BaseKit/BaseText/BaseText';
+import Box from '../../BaseKit/Box/Box';
+import Icon from '../../BaseKit/Icon/Icon';
+import type { IconsId } from '../../BaseKit/Icon/generated/icons';
+import { masks } from './helpers';
+import { useStyle } from './styles';
+import ErrorLabel from '../ErrorLabel/ErrorLabel';
 
 Animated.addWhitelistedNativeProps({ text: true });
 //@ts-ignore
 export const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
+
 type TInput = {
   placeholder: string;
   mask?: string;
@@ -48,16 +51,16 @@ type TInput = {
   max?: number;
   numberOfLines?: number;
   maxCharLimit?: number;
-  style?: ViewStyle;
   autofocus?: boolean;
-  preffix?: ReactNode | null | string;
+  preffix?: ReactNode | IconsId | null | string;
   disabled?: boolean;
   autoComplete?: string;
   stylectn?: ViewStyle;
   styleInput?: TextStyle;
   inputProps?: TextInputProps;
-  control?: Control<FieldValues, any>;
+  control?: Control<FormValues, any>;
   pressEnterBlur?: boolean;
+  colorsInputAnimate?: [any, any, any];
   handleSubmit?: () => void;
   onChange?: (e: string) => void;
   onBlur?: () => void;
@@ -68,6 +71,7 @@ type TInput = {
 type TSecureSuffix = {
   onClick: (type: KeyboardTypeOptions | 'select' | 'password') => void;
   type: KeyboardTypeOptions | 'select' | 'password';
+  innerType: KeyboardTypeOptions | 'select' | 'password';
   style?: TextStyle;
   styleIcon: TextStyle;
 };
@@ -75,6 +79,7 @@ type TSecureSuffix = {
 export const SecureSuffix: FC<TSecureSuffix> = ({
   onClick,
   styleIcon,
+  innerType,
   style,
   type,
 }) => {
@@ -87,11 +92,11 @@ export const SecureSuffix: FC<TSecureSuffix> = ({
       activeOpacity={0.8}
       style={style}
       onPress={() => {
-        onClick(type === 'password' ? 'default' : 'password');
+        onClick(innerType === 'password' ? 'default' : 'password');
       }}
     >
       <View pointerEvents="none">
-        {type === 'password' ? (
+        {innerType === 'password' ? (
           <Icon size={12} style={styleIcon} name="icon_showbold" />
         ) : (
           <Icon size={12} style={styleIcon} name="icon_hidebold" />
@@ -135,27 +140,26 @@ export const Preffix: FC<TPreffix> = ({
     </Box>
   );
 };
+Preffix.displayName = 'Input.Preffix';
 
 type TCharCount = {
   maxCharLimit?: number;
   charCount: number;
+  style?: TextStyle;
 };
 
 export const RenderCharCount: FC<TCharCount> = ({
   charCount,
   maxCharLimit,
+  style,
 }) => {
   let count = useMemo(() => {
     if (!maxCharLimit) {
       return null;
     }
 
-    return (
-      <BaseText style={styles?.charCount}>
-        {' '}
-        {`${charCount}/${maxCharLimit}`}
-      </BaseText>
-    );
+    return <BaseText style={style}> {`${charCount}/${maxCharLimit}`}</BaseText>;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [charCount, maxCharLimit]);
   if (maxCharLimit) {
     return null;
@@ -163,6 +167,7 @@ export const RenderCharCount: FC<TCharCount> = ({
 
   return count;
 };
+Preffix.displayName = 'Input.CharCount';
 
 export const Input: FC<TInput> = ({
   placeholder,
@@ -181,6 +186,11 @@ export const Input: FC<TInput> = ({
   styleInput,
   control,
   inputProps,
+  colorsInputAnimate = [
+    'rgba(243,88,67,1)',
+    'rgba(235, 235, 235, 1)',
+    'rgba(20, 20, 20, 1)',
+  ],
   handlePressEnter,
   onChange,
   onBlur,
@@ -195,9 +205,10 @@ export const Input: FC<TInput> = ({
 
   const {
     field,
-    fieldState: { isTouched, error },
+    fieldState: { error },
   } = control
-    ? useController({
+    ? // eslint-disable-next-line react-hooks/rules-of-hooks
+      useController({
         control,
         defaultValue,
         name,
@@ -208,15 +219,17 @@ export const Input: FC<TInput> = ({
           onChange: onChange,
           ref: undefined,
         },
-        fieldState: { isTouched: true, error: false },
+        fieldState: { error: false },
       };
 
   useEffect(() => {
-    if (field.ref && autofocus) {
+    if (field?.ref && autofocus) {
       // Hack focus bug
-      if (field.ref?.current) {
+      //@ts-ignore
+      if (field?.ref?.current) {
         setTimeout(() => {
-          field.ref?.current?.focus();
+          //@ts-ignore
+          field?.ref?.current?.focus();
         }, 600);
       }
     }
@@ -230,13 +243,12 @@ export const Input: FC<TInput> = ({
     const color = interpolateColor(
       valueShared.value,
       [-1, 0, 1],
-      ['rgb(243,88,67)', 'rgba(235, 235, 235, 1)', 'rgba(20, 20, 20, 1)']
+      colorsInputAnimate
     );
     return {
       borderColor: color,
     };
   }, [valueShared]);
-
   const getStyles = useMemo(() => {
     return StyleSheet.flatten({
       ...styles?.ctn,
@@ -263,7 +275,7 @@ export const Input: FC<TInput> = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [field.value, value, error?.message]);
-  const getStylesIconPassword: TextStyle = useMemo(() => {
+  const getStylesSecureSuffix: TextStyle = useMemo(() => {
     return {
       ...styles?.icon,
       ...(error && styles?.iconError),
@@ -298,12 +310,13 @@ export const Input: FC<TInput> = ({
         field?.onChange(value);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <View>
       <AnimatedTextInput
-        style={[getStyles]}
+        style={[getStyles, styleInputAnimated]}
         {...(control ? { value: field.value } : {})}
         defaultValue={defaultValue}
         onChangeText={_onChangeText}
@@ -320,9 +333,11 @@ export const Input: FC<TInput> = ({
             onBlur();
           }
         }}
-        ref={(elm) => {
+        ref={(el: any) => {
           if (control) {
-            field.ref(elm);
+            if (field.ref) {
+              field?.ref(el);
+            }
           }
         }}
         placeholder={placeholder}
@@ -333,7 +348,7 @@ export const Input: FC<TInput> = ({
         keyboardType={
           type === 'password' ? 'default' : (type as KeyboardTypeOptions)
         }
-        // placeholderTextColor={theme.colors['--color-silver_chalice']}
+        placeholderTextColor={styles?.placeholderColor?.color}
         onSubmitEditing={(e) => {
           if (pressEnterBlur) {
             if (handlePressEnter) {
@@ -344,33 +359,29 @@ export const Input: FC<TInput> = ({
         }}
         {...inputProps}
       />
-      <RenderCharCount charCount={charCount} maxCharLimit={maxCharLimit} />
+      <RenderCharCount
+        charCount={charCount}
+        maxCharLimit={maxCharLimit}
+        style={styles.charCount}
+      />
       <Preffix
         preffix={preffix}
         hasValue={field.value || error?.message}
         style={styles?.preffix}
         styleIcon={getStylesIcons}
       />
-
       <SecureSuffix
-        type={innerType}
+        type={type}
+        innerType={innerType}
         style={styles?.suffix}
-        styleIcon={getStylesIconPassword}
+        styleIcon={getStylesSecureSuffix}
         onClick={setInnerType}
       />
-      {error?.message && (
-        <Animated.View
-          entering={FadeInUp}
-          exiting={FadeOutUp}
-          style={styles?.errorCtn}
-        >
-          <BaseText
-            style={styles?.errorLabel}
-            title={error?.message}
-            numberOfLines={1}
-          />
-        </Animated.View>
-      )}
+
+      <ErrorLabel
+        styles={{ errorCtn: styles?.errorCtn, errorLabel: styles?.errorLabel }}
+        message={error?.message}
+      />
     </View>
   );
 };

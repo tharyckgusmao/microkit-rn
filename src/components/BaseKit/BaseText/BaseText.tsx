@@ -12,7 +12,7 @@ const useStyle = (props: any) =>
   makeStyle((theme) => {
     return {
       default: {
-        fontSize: theme?.base.size?.primary,
+        fontSize: theme?.base.size?.medium,
         fontFamily: theme?.base.font?.[500],
         ...props,
       },

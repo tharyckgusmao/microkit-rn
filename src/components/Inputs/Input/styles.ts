@@ -3,22 +3,22 @@ import type { TThemeBase } from '../../..//contexts/themeContext';
 import { makeStyle } from '../../../hooks/makeStyle';
 
 export const useStyle = makeStyle((theme: TThemeBase) => {
-  return { ...theme?.components?.input, ...theme?.components?.input?.error };
+  return theme?.components?.input;
 });
 
 export const style = StyleSheet.create({
   ctn: {
-    borderTopLeftRadius: 10,
+    borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
-    borderBottomRightRadius: 10,
+    borderBottomRightRadius: 12,
     borderBottomLeftRadius: 12,
-    paddingTop: 0,
-    paddingRight: 16,
-    paddingBottom: 0,
-    paddingLeft: 16,
+    paddingTop: 14,
+    paddingRight: 12,
+    paddingBottom: 14,
+    paddingLeft: 12,
     borderWidth: 1,
     borderStyle: 'solid',
-    height: 40,
+    // height: 40,
     zIndex: 4,
     fontSize: 14,
     borderColor: '#d9d9d9',
@@ -28,10 +28,6 @@ export const style = StyleSheet.create({
   passwordCtn: {
     position: 'absolute',
 
-    paddingTop: 6,
-    paddingRight: 6,
-    paddingBottom: 6,
-    paddingLeft: 6,
     zIndex: 6,
 
     right: 8,
@@ -69,18 +65,20 @@ export const style = StyleSheet.create({
     alignItems: 'center',
     zIndex: 6,
   },
-  suffixText: {},
-  errorInput: {},
-  error: {},
-  empty: {},
-  typing: {},
+  suffixText: { color: 'transparent' },
+  errorInput: { color: 'transparent' },
+  error: { color: 'transparent' },
+  empty: { color: 'transparent' },
+  typing: { color: 'transparent' },
 
-  filled: {},
-  disabled: {},
+  filled: { color: 'transparent' },
+  disabled: { color: 'transparent' },
 
-  icon: {},
-  iconFilled: {},
-  iconError: {},
+  icon: { color: 'transparent' },
+  iconFilled: { color: 'transparent' },
+  iconError: {
+    color: 'transparent',
+  },
   placeholderCtn: {
     display: 'flex',
     height: 40,
@@ -95,6 +93,7 @@ export const style = StyleSheet.create({
       },
     ],
   },
+  placeholderColor: { color: '#d9d9d9' },
   charCount: {
     bottom: 8,
     right: 8,
@@ -111,7 +110,6 @@ export const styleInputError = StyleSheet.create({
     right: 0,
     fontWeight: '600',
     width: '100%',
-    // backgroundColor: theme.colors['--color-fire_opal'],
     paddingTop: 12,
     paddingRight: 6,
     paddingBottom: 5,
@@ -124,9 +122,8 @@ export const styleInputError = StyleSheet.create({
     textAlign: 'right',
   },
   errorLabel: {
-    // fontFamily: theme.font.semibold,
-    // fontSize: theme.size[9],
-    color: '#fff',
+    fontSize: 9,
+    color: '#000',
     letterSpacing: 1,
     textAlign: 'right',
     textTransform: 'uppercase',

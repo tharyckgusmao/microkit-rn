@@ -1,7 +1,13 @@
 import type { FC } from 'react';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import React, { Button, ScrollView } from 'react-native';
-import { Input } from 'react-native-microkit-rn';
+import {
+  BaseText,
+  Divider,
+  FormInput,
+  Input,
+  Label,
+} from 'react-native-microkit-rn';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 export type FormValues = {
@@ -31,25 +37,23 @@ const InputHome: FC = () => {
     <ScrollView
       contentContainerStyle={{
         padding: 20,
-        gap: 40,
+        gap: 25,
       }}
     >
+      <BaseText title="Label Example" />
+      <Label title="Label" />
+      <Divider type="h" />
+      <BaseText title="Inputs Example" />
       <FormProvider {...methodsForm}>
         <Input
-          placeholder="escreva aqui..."
+          placeholder="write here..."
           name="password"
           type="password"
-          preffix={'icon_locklinear'}
           pressEnterBlur={true}
           control={methodsForm.control}
-          colorsInputAnimate={[
-            'rgba(236, 130, 116,1)',
-            'rgb(2a25, 225, 225,1)',
-            'rgba(0, 90, 143,1)',
-          ]}
         />
         <Input
-          placeholder="escreva aqui..."
+          placeholder="write here..."
           name="name"
           type="default"
           preffix={'icon_userlinear'}
@@ -57,9 +61,45 @@ const InputHome: FC = () => {
           control={methodsForm.control}
           colorsInputAnimate={[
             'rgba(236, 130, 116,1)',
-            'rgb(2a25, 225, 225,1)',
-            'rgba(0, 90, 143,1)',
+            'rgba(225, 225, 225,1)',
+            '#898989',
           ]}
+        />
+        <Input
+          placeholder="(__) _________"
+          name="phone"
+          mask="phone"
+          type="phone-pad"
+          preffix={'icon_phonelinear'}
+          pressEnterBlur={true}
+          control={methodsForm.control}
+          colorsInputAnimate={[
+            'rgba(236, 130, 116,1)',
+            'rgba(225, 225, 225,1)',
+            '#898989',
+          ]}
+        />
+        <Input
+          control={methodsForm.control}
+          name="year"
+          placeholder="____"
+          type="number-pad"
+          mask="year"
+          preffix={'icon_calendarlinear'}
+          pressEnterBlur={true}
+        />
+        <Divider type="h" />
+        <BaseText title="Form Input Example" />
+        <FormInput
+          name="name"
+          label="FullName"
+          placeholder="write here..."
+          type="default"
+          preffix={'icon_userlinear'}
+          control={methodsForm.control}
+          styleInput={{
+            textTransform: 'capitalize',
+          }}
         />
       </FormProvider>
       <Button onPress={handleSubmit} title="submit" />
