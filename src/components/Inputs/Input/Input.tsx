@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-// import { Control, FieldValues, useController } from 'react-hook-form';
+import { Control, FieldValues, useController } from 'react-hook-form';
 import React, {
   KeyboardTypeOptions,
   StyleSheet,
@@ -17,7 +17,6 @@ import React, {
   View,
   ViewStyle,
 } from 'react-native';
-import Animated from 'react-native-reanimated';
 
 import IMask from 'imask';
 import BaseText from '../../BaseKit/BaseText/BaseText';
@@ -26,6 +25,14 @@ import Icon from '../../BaseKit/Icon/Icon';
 import type { IconsId } from '../../BaseKit/Icon/generated/icons';
 import { masks } from './helpers';
 import { useStyle } from './styles';
+import Animated, {
+  FadeInUp,
+  FadeOutUp,
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 Animated.addWhitelistedNativeProps({ text: true });
 //@ts-ignore
@@ -49,7 +56,7 @@ type TInput = {
   stylectn?: ViewStyle;
   styleInput?: TextStyle;
   inputProps?: TextInputProps;
-  // control?: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
   pressEnterBlur?: boolean;
   handleSubmit?: () => void;
   onChange?: (e: string) => void;
@@ -61,7 +68,7 @@ type TInput = {
 type TSecureSuffix = {
   onClick: (type: KeyboardTypeOptions | 'select' | 'password') => void;
   type: KeyboardTypeOptions | 'select' | 'password';
-  style: TextStyle;
+  style?: TextStyle;
   styleIcon: TextStyle;
 };
 
@@ -97,7 +104,7 @@ export const SecureSuffix: FC<TSecureSuffix> = ({
 type TPreffix = {
   preffix?: string | ReactNode;
   hasValue: boolean;
-  style: ViewStyle;
+  style?: ViewStyle;
   styleIcon: TextStyle;
 };
 
@@ -172,7 +179,7 @@ export const Input: FC<TInput> = ({
   preffix = null,
   disabled,
   styleInput,
-  // control,
+  control,
   inputProps,
   handlePressEnter,
   onChange,
@@ -180,7 +187,6 @@ export const Input: FC<TInput> = ({
   onFocus,
 }) => {
   const styles = useStyle();
-  console.log('🚀 ~ file: Input.tsx:177 ~ styles:', styles);
   const [charCount, setCharCount] = useState<number>(0);
 
   const [innerType, setInnerType] = useState(type);
@@ -190,23 +196,20 @@ export const Input: FC<TInput> = ({
   const {
     field,
     fieldState: { isTouched, error },
-  } =
-    // control
-    //   ? useController({
-    //       control,
-    //       defaultValue,
-    //       name,
-    //     })
-    //   :
-
-    {
-      field: {
-        value: null,
-        onChange: onChange,
-        ref: undefined,
-      },
-      fieldState: { isTouched: true, error: false },
-    };
+  } = control
+    ? useController({
+        control,
+        defaultValue,
+        name,
+      })
+    : {
+        field: {
+          value: null,
+          onChange: onChange,
+          ref: undefined,
+        },
+        fieldState: { isTouched: true, error: false },
+      };
 
   useEffect(() => {
     if (field.ref && autofocus) {
@@ -219,28 +222,28 @@ export const Input: FC<TInput> = ({
     }
   }, [autofocus, field.ref, mask]);
 
-  // const valueShared = useDerivedValue(() => {
-  //   return withTiming(error ? -1 : field.value || focused ? 1 : 0);
-  // }, [field.value, error, focused]);
+  const valueShared = useDerivedValue(() => {
+    return withTiming(error ? -1 : field.value || focused ? 1 : 0);
+  }, [field.value, error, focused]);
 
-  // const styleInputAnimated = useAnimatedStyle(() => {
-  //   const color = interpolateColor(
-  //     valueShared.value,
-  //     [-1, 0, 1],
-  //     ['rgb(243,88,67)', 'rgba(235, 235, 235, 1)', 'rgba(20, 20, 20, 1)']
-  //   );
-  //   return {
-  //     borderColor: color,
-  //   };
-  // }, [valueShared]);
+  const styleInputAnimated = useAnimatedStyle(() => {
+    const color = interpolateColor(
+      valueShared.value,
+      [-1, 0, 1],
+      ['rgb(243,88,67)', 'rgba(235, 235, 235, 1)', 'rgba(20, 20, 20, 1)']
+    );
+    return {
+      borderColor: color,
+    };
+  }, [valueShared]);
 
   const getStyles = useMemo(() => {
     return StyleSheet.flatten({
-      ...styles?.input,
+      ...styles?.ctn,
       ...(!!preffix && styles?.preffixCtn),
       ...(focused && styles?.typing),
       ...(focused && !field.value && styles?.empty),
-      // ...((control ? field.value : value) && !error?.message && styles?.filled),
+      ...((control ? field.value : value) && !error?.message && styles?.filled),
       ...(disabled && styles?.disabled),
       ...(error && styles?.error),
       ...styleInput,
@@ -252,9 +255,9 @@ export const Input: FC<TInput> = ({
     return {
       ...styles?.icon,
       ...(focused && styles?.iconFilled),
-      // ...((control ? field.value : value) &&
-      //   !error?.message &&
-      //   styles?.iconFilled),
+      ...((control ? field.value : value) &&
+        !error?.message &&
+        styles?.iconFilled),
       ...(error && styles?.iconError),
     };
 
@@ -301,7 +304,7 @@ export const Input: FC<TInput> = ({
     <View>
       <AnimatedTextInput
         style={[getStyles]}
-        // {...(control ? { value: field.value } : {})}
+        {...(control ? { value: field.value } : {})}
         defaultValue={defaultValue}
         onChangeText={_onChangeText}
         onFocus={() => {
@@ -318,9 +321,9 @@ export const Input: FC<TInput> = ({
           }
         }}
         ref={(elm) => {
-          // if (control) {
-          //   field.ref(elm);
-          // }
+          if (control) {
+            field.ref(elm);
+          }
         }}
         placeholder={placeholder}
         numberOfLines={numberOfLines ?? 1}
@@ -355,19 +358,19 @@ export const Input: FC<TInput> = ({
         styleIcon={getStylesIconPassword}
         onClick={setInnerType}
       />
-      {/* {error?.message && (
+      {error?.message && (
         <Animated.View
           entering={FadeInUp}
           exiting={FadeOutUp}
-          style={styleError.errorCtn}
+          style={styles?.errorCtn}
         >
           <BaseText
-            style={styleError.errorLabel}
+            style={styles?.errorLabel}
             title={error?.message}
             numberOfLines={1}
           />
         </Animated.View>
-      )} */}
+      )}
     </View>
   );
 };

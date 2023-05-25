@@ -3,7 +3,11 @@ import React, { ScrollView } from 'react-native';
 import { Input } from 'react-native-microkit-rn';
 const InputHome: FC = () => {
   return (
-    <ScrollView>
+    <ScrollView
+      contentContainerStyle={{
+        padding: 20,
+      }}
+    >
       <Input
         placeholder="escreva aqui..."
         name="password"

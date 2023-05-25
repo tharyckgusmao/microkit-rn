@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
 import type { Style } from '../hooks/makeStyle';
+import {
+  style as styleInput,
+  styleInputError,
+} from '../components/Inputs/Input/styles';
 
 let colorsDefault = {
   '--color-white': '#ffffff',
@@ -35,8 +39,8 @@ let spacingDefault = {
   '07': 32,
 };
 
-export type TThemeStructure<T> = {
-  components?: Style<string>;
+export type TThemeStructure<T, U> = {
+  components?: U;
   base?: T;
 };
 let base = {
@@ -44,10 +48,14 @@ let base = {
   size: sizesDefault,
   spacing: spacingDefault,
 };
+let components = {
+  input: { ...styleInput, ...styleInputError },
+};
 export const defaultTheme = {
   base,
+  components,
 };
-export type TThemeBase = TThemeStructure<typeof base>;
+export type TThemeBase = TThemeStructure<typeof base, typeof components>;
 
 type ThemeContextType = {
   theme: TThemeBase;
@@ -60,7 +68,7 @@ const ThemeContext = createContext<Partial<ThemeContextType>>({
 
 type TThemeProvider = {
   children?: React.ReactNode;
-  initialTheme?: TThemeStructure<typeof base> | any;
+  initialTheme?: TThemeStructure<typeof base, typeof components> | any;
 };
 
 const ThemeProvider = ({ children, initialTheme }: TThemeProvider) => {

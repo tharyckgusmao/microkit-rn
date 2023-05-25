@@ -161,6 +161,7 @@
   },
   "dependencies": {
     "imask": "6.6.1",
+    "react-hook-form": "7.43.9",
     "react-native-vector-icons": "9.2.0"
   }
 }

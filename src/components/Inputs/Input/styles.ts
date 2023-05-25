@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
+import type { TThemeBase } from '../../..//contexts/themeContext';
 import { makeStyle } from '../../../hooks/makeStyle';
-import type { TThemeBase } from 'src/contexts/themeContext';
 
-export const useStyle = makeStyle((theme: TThemeBase) => ({
-  input: {
+export const useStyle = makeStyle((theme: TThemeBase) => {
+  return { ...theme?.components?.input, ...theme?.components?.input?.error };
+});
+
+export const style = StyleSheet.create({
+  ctn: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 12,
     borderBottomRightRadius: 10,
@@ -16,7 +20,7 @@ export const useStyle = makeStyle((theme: TThemeBase) => ({
     borderStyle: 'solid',
     height: 40,
     zIndex: 4,
-    fontSize: 13,
+    fontSize: 14,
     borderColor: '#d9d9d9',
     backgroundColor: '#fff',
     alignContent: 'center',
@@ -65,44 +69,18 @@ export const useStyle = makeStyle((theme: TThemeBase) => ({
     alignItems: 'center',
     zIndex: 6,
   },
-  suffixText: {
-    // color: theme.colors['--color-base_silver']
-  },
-  errorInput: {
-    // color: theme.colors['--color-fire_opal']
-  },
-  error: {
-    // borderColor: theme.colors['--color-fire_opal'],
-    // color: theme.colors['--color-fire_opal']
-  },
-  empty: {
-    // fontFamily: theme.font.medium
-  },
-  typing: {
-    // fontFamily: theme.font.semibold,
-    // color: theme.colors['--color-base_eerieblack'],
-    // borderColor: theme.colors['--color-base_eerieblack']
-    //  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1)) !important;
-  },
+  suffixText: {},
+  errorInput: {},
+  error: {},
+  empty: {},
+  typing: {},
 
-  filled: {
-    // fontFamily: theme.font.semibold,
-    // borderColor: theme.colors['--color-base_eerieblack'],
-    // color: theme.colors['--color-base_eerieblack']
-  },
-  disabled: {
-    // backgroundColor: theme.colors['--color-platinum']
-  },
+  filled: {},
+  disabled: {},
 
-  icon: {
-    // color: theme.colors['--color-base_silver']
-  },
-  iconFilled: {
-    // color: theme.colors['--color-base_eerieblack']
-  },
-  iconError: {
-    // color: theme.colors['--color-fire_opal']
-  },
+  icon: {},
+  iconFilled: {},
+  iconError: {},
   placeholderCtn: {
     display: 'flex',
     height: 40,
@@ -111,9 +89,6 @@ export const useStyle = makeStyle((theme: TThemeBase) => ({
     justifyContent: 'center',
   },
   placeholder: {
-    // fontFamily: theme.font.regular,
-    // fontSize: theme.size[13],
-    // color: theme.colors['--color-silver_chalice'],
     transform: [
       {
         translateY: -2,
@@ -123,15 +98,13 @@ export const useStyle = makeStyle((theme: TThemeBase) => ({
   charCount: {
     bottom: 8,
     right: 8,
-    // fontFamily: theme.font.regular,
-    // fontSize: theme.size[10],
+
     position: 'absolute',
-    // color: theme.colors['--color-light_gray'],
     zIndex: 10,
   },
-}));
+});
 
-export const styleError = StyleSheet.create({
+export const styleInputError = StyleSheet.create({
   errorCtn: {
     position: 'absolute',
     bottom: -20,

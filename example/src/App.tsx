@@ -34,9 +34,67 @@ let base = {
     '800': 'Montserrat-Bold',
   },
 };
-let theme = { base, components: {} };
+let inputStyles = {
+  suffixText: {
+    color: base.colors['--color-base_silver'],
+  },
+  errorInput: {
+    color: base.colors['--color-fire_opal'],
+  },
+  error: {
+    borderColor: base.colors['--color-fire_opal'],
+    color: base.colors['--color-fire_opal'],
+  },
+  empty: {
+    fontFamily: base.font.medium,
+  },
+  typing: {
+    fontFamily: base.font.semibold,
+    color: base.colors['--color-base_eerieblack'],
+    borderColor: base.colors['--color-base_eerieblack'],
+  },
+  filled: {
+    fontFamily: base.font.semibold,
+    borderColor: base.colors['--color-base_eerieblack'],
+    color: base.colors['--color-base_eerieblack'],
+  },
+  disabled: {
+    backgroundColor: base.colors['--color-base_platinum'],
+  },
+  icon: {
+    color: base.colors['--color-base_silver'],
+  },
+  iconFilled: {
+    color: base.colors['--color-base_eerieblack'],
+  },
+  iconError: {
+    color: base.colors['--color-fire_opal'],
+  },
+  placeholder: {
+    fontFamily: base.font.regular,
+    fontSize: 13,
+    color: base.colors['--color-base_silver'],
+    transform: [
+      {
+        translateY: -2,
+      },
+    ],
+  },
+  charCount: {
+    bottom: 8,
+    right: 8,
+    fontFamily: base.font.regular,
+    fontSize: 10,
+    position: 'absolute',
+    color: base.colors['--color-base_lightgray'],
+    zIndex: 10,
+  },
+};
 
-export type APPTheme = TThemeStructure<typeof base>;
+let components = { ...defaultTheme.components, ...inputStyles };
+let theme = { base, components };
+
+export type APPTheme = TThemeStructure<typeof base, typeof components>;
 
 export default function App() {
   const [fontsLoaded] = useFonts({
