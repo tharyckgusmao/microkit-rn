@@ -11,5 +11,7 @@ export const useStyle = (props?: TextStyle) =>
 export const styles = StyleSheet.create({
   title: {
     marginBottom: 6,
+    fontFamily: 'default',
+    fontSize: 12,
   },
 });

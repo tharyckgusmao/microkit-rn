@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { Style } from '../hooks/makeStyle';
 import {
   style as styleInput,
   styleInputError,
 } from '../components/Inputs/Input/styles';
-import { style as styleLabel } from '../components/Inputs/Label/styles';
+import { styles as styleLabel } from '../components/Inputs/Label/styles';
+import { styles as styleButton } from '../components/Buttons/Button/styles';
 
-let colorsDefault = {
+export let colorsDefault = {
   '--color-white': '#ffffff',
   '--color-black': '#000000',
   '--color-cultured': '#f9f9f9',
@@ -52,6 +52,7 @@ let base = {
 let components = {
   input: { ...styleInput, ...styleInputError },
   label: { ...styleLabel },
+  button: { ...styleButton },
 };
 export const defaultTheme = {
   base,

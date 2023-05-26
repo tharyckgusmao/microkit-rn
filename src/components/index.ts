@@ -7,3 +7,4 @@ export { IconsId as IconsType } from './BaseKit/Icon/generated/icons';
 export { default as Input } from './Inputs/Input/Input';
 export { default as Label } from './Inputs/Label/Label';
 export { default as FormInput } from './Inputs/FormInput/FormInput';
+export { default as Button } from './Buttons/Button/Button';

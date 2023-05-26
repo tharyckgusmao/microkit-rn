@@ -13,6 +13,10 @@ const routes = [
     title: 'Input',
     route: 'Input',
   },
+  {
+    title: 'Buttons',
+    route: 'Buttons',
+  },
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {

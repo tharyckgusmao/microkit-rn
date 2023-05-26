@@ -13,6 +13,7 @@ import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
 import merge from 'lodash.merge';
+import Buttons from './pages/Buttons/Buttons';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -42,7 +43,7 @@ let base = {
     medium: 16,
   },
 };
-let inputStyles = {
+let styles = {
   input: {
     ctn: {
       fontFamily: base.font.regular,
@@ -125,8 +126,34 @@ let inputStyles = {
       color: base.colors['--color-base_eerieblack'],
     },
   },
+  button: {
+    button: {
+      backgroundColor: base.colors['--color-green_turquoise'],
+      color: base.colors['--color-base_white'],
+      borderColor: base.colors['--color-green_turquoise'],
+    },
+    title: {
+      fontSize: base.size.primary,
+      fontFamily: base.font[800],
+      color: '#fff',
+    },
+    titleoutline: {
+      color: base.colors['--color-base_eerieblack'],
+    },
+    outline: {
+      borderColor: base.colors['--color-base_eerieblack'],
+    },
+    filledBlack: {
+      borderColor: base.colors['--color-base_eerieblack'],
+
+      backgroundColor: base.colors['--color-base_eerieblack'],
+    },
+    disabled: {
+      backgroundColor: base.colors['--color-base_silver'],
+    },
+  },
 };
-let components = merge(defaultTheme.components, inputStyles);
+let components = merge(defaultTheme.components, styles);
 
 let theme = { base, components };
 
@@ -168,6 +195,11 @@ export default function App() {
           <Stack.Screen
             name="Input"
             component={Input}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="Buttons"
+            component={Buttons}
             options={{ headerShown: true }}
           />
         </Stack.Navigator>

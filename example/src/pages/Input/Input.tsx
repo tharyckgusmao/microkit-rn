@@ -1,14 +1,15 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import type { FC } from 'react';
-import { FormProvider, useForm, useFormContext } from 'react-hook-form';
-import React, { Button, ScrollView } from 'react-native';
+import { FormProvider, useForm } from 'react-hook-form';
+import React, { ScrollView } from 'react-native';
 import {
   BaseText,
+  Button,
   Divider,
   FormInput,
   Input,
   Label,
 } from 'react-native-microkit-rn';
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 export type FormValues = {
   email: string;
