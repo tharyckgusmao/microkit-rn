@@ -17,6 +17,10 @@ const routes = [
     title: 'Buttons',
     route: 'Buttons',
   },
+  {
+    title: 'DataDisplay',
+    route: 'DataDisplay',
+  },
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {

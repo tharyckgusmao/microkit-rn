@@ -3,8 +3,11 @@ import type { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import React, { ScrollView } from 'react-native';
 import {
+  BackButton,
   BaseText,
+  Box,
   Button,
+  ButtonTabs,
   Divider,
   FormInput,
   Icon,
@@ -86,6 +89,21 @@ const Buttons: FC = () => {
         title="Suffix"
         preffix={<Icon name={'icon_arrowleftbold'} />}
       />
+      <BaseText title="Back Button" />
+      <Box row style={{ gap: '10' }}>
+        <BackButton title="Back..." onClick={onClick} />
+        <BackButton onClick={onClick} />
+      </Box>
+      <BaseText title="Button Tabs" />
+      <Box row style={{ gap: '10' }}>
+        <ButtonTabs
+          buttons={[
+            { icon: 'icon_alert', title: 'alert', onAction: onClick },
+            { icon: 'icon_alert', title: 'alert', onAction: onClick },
+            { icon: 'icon_alert', title: 'alert', onAction: onClick },
+          ]}
+        />
+      </Box>
     </ScrollView>
   );
 };

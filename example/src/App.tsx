@@ -14,6 +14,7 @@ import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
 import merge from 'lodash.merge';
 import Buttons from './pages/Buttons/Buttons';
+import DataDisplay from './pages/DataDisplay/DataDisplay';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -152,6 +153,36 @@ let styles = {
       backgroundColor: base.colors['--color-base_silver'],
     },
   },
+  backButton: {
+    ctn: {
+      borderColor: base.colors['--color-base_platinum'],
+      backgroundColor: base.colors['--color-base_platinum'],
+    },
+    icon: {
+      fontSize: base.size.primary,
+      color: base.colors['--color-base_eerieblack'],
+    },
+    title: {
+      fontSize: base.size.primary,
+      fontFamily: base.font[600],
+      color: base.colors['--color-base_eerieblack'],
+    },
+  },
+  buttonTabs: {
+    ctn: {
+      borderColor: base.colors['--color-base_platinum'],
+      backgroundColor: base.colors['--color-base_platinum'],
+    },
+    icon: {
+      fontSize: base.size.primary,
+      color: base.colors['--color-base_eerieblack'],
+    },
+    title: {
+      fontFamily: base.font[600],
+      fontSize: base.size.primary,
+      color: base.colors['--color-base_eerieblack'],
+    },
+  },
 };
 let components = merge(defaultTheme.components, styles);
 
@@ -200,6 +231,11 @@ export default function App() {
           <Stack.Screen
             name="Buttons"
             component={Buttons}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="DataDisplay"
+            component={DataDisplay}
             options={{ headerShown: true }}
           />
         </Stack.Navigator>
