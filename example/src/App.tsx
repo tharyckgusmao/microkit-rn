@@ -1,20 +1,19 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
+import merge from 'lodash.merge';
 import * as React from 'react';
 import {
   IconFont,
-  Style,
   TThemeStructure,
   ThemeProvider,
   defaultTheme,
 } from 'react-native-microkit-rn';
+import Buttons from './pages/Buttons/Buttons';
+import DataDisplay from './pages/DataDisplay/DataDisplay';
 import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
-import merge from 'lodash.merge';
-import Buttons from './pages/Buttons/Buttons';
-import DataDisplay from './pages/DataDisplay/DataDisplay';
 const Stack = createNativeStackNavigator();
 
 let base = {

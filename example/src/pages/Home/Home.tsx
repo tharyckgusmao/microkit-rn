@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import type { APPTheme } from 'example-old/src/App';
+import type { APPTheme } from '../../App';
 import React from 'react';
 import { ScrollView, Text, TouchableOpacity } from 'react-native';
 import { Divider, Icon, makeStyle } from 'react-native-microkit-rn';
@@ -18,7 +18,7 @@ const routes = [
     route: 'Buttons',
   },
   {
-    title: 'DataDisplay',
+    title: 'Data Display',
     route: 'DataDisplay',
   },
 ];
