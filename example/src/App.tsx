@@ -14,6 +14,7 @@ import DataDisplay from './pages/DataDisplay/DataDisplay';
 import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
+import Loaders from './pages/Loaders/Loaders';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -182,6 +183,13 @@ let styles = {
       color: base.colors['--color-base_eerieblack'],
     },
   },
+  loaders: {
+    dot: {
+      dot: {
+        backgroundColor: base.colors['--color-green_turquoise'],
+      },
+    },
+  },
 };
 let components = merge(defaultTheme.components, styles);
 
@@ -235,6 +243,11 @@ export default function App() {
           <Stack.Screen
             name="DataDisplay"
             component={DataDisplay}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="Loaders"
+            component={Loaders}
             options={{ headerShown: true }}
           />
         </Stack.Navigator>

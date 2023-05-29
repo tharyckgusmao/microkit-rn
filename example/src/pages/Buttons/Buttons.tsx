@@ -90,12 +90,12 @@ const Buttons: FC = () => {
         preffix={<Icon name={'icon_arrowleftbold'} />}
       />
       <BaseText title="Back Button" />
-      <Box row style={{ gap: '10' }}>
+      <Box row style={{ gap: 10 }}>
         <BackButton title="Back..." onClick={onClick} />
         <BackButton onClick={onClick} />
       </Box>
       <BaseText title="Button Tabs" />
-      <Box row style={{ gap: '10' }}>
+      <Box row style={{ gap: 10 }}>
         <ButtonTabs
           buttons={[
             { icon: 'icon_alert', title: 'alert', onAction: onClick },

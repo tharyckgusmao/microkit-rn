@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { ScrollView } from 'react-native';
-import { Avatar, BaseText, Box } from 'react-native-microkit-rn';
+import { Avatar, BaseText, Box, Label } from 'react-native-microkit-rn';
 import React from 'react';
 const DataDisplay: FC = () => {
   let font = require('../../../assets/fonts/ttf/Montserrat-SemiBold.ttf');
@@ -12,7 +12,7 @@ const DataDisplay: FC = () => {
       }}
     >
       <BaseText title="Avatar Examples" />
-      <BaseText title="Mode letter" />
+      <Label title="Mode 'letter'" />
       <Box row style={{ gap: 10 }}>
         <Avatar
           width={80}
@@ -55,7 +55,7 @@ const DataDisplay: FC = () => {
           letter="T"
         />
       </Box>
-      <BaseText title="Mode Gradient" />
+      <Label title="Mode 'Gradient'" />
       <Box row style={{ gap: 10 }}>
         <Avatar
           width={80}
@@ -65,6 +65,9 @@ const DataDisplay: FC = () => {
           borderRadius={100}
           colors={['#ffa953', '#e38220', '#20e36e']}
           mode="gradient"
+          onGenerate={(url: string) => {
+            console.log(url);
+          }}
         />
         <Avatar
           width={80}
@@ -72,7 +75,7 @@ const DataDisplay: FC = () => {
           fontPath={font}
           fontSize={40}
           borderRadius={100}
-          colors={['#9637ef', '#df5d5d', '#bc20e3']}
+          colors={['#9637ef', '#df5d5d', '#d975f2']}
           mode="gradient"
         />
         <Avatar
