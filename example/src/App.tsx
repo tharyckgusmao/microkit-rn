@@ -45,79 +45,96 @@ let base = {
   },
 };
 let styles = {
-  input: {
-    ctn: {
-      fontFamily: base.font.regular,
+  inputs: {
+    input: {
+      ctn: {
+        fontFamily: base.font.regular,
 
-      borderTopLeftRadius: 8,
-      borderTopRightRadius: 8,
-      borderBottomRightRadius: 8,
-      borderBottomLeftRadius: 8,
-      height: 44,
-      paddingRight: 14,
-      paddingLeft: 14,
-    },
-    suffixText: {
-      color: base.colors['--color-base_silver'],
-    },
-    errorInput: {
-      color: base.colors['--color-fire_opal'],
-    },
-    error: {
-      borderColor: base.colors['--color-fire_opal'],
-      color: base.colors['--color-fire_opal'],
-    },
-    empty: {
-      fontFamily: base.font.medium,
-    },
-    typing: {
-      fontFamily: base.font.semibold,
-      color: base.colors['--color-base_eerieblack'],
-      borderColor: base.colors['--color-base_eerieblack'],
-    },
-    filled: {
-      fontFamily: base.font.semibold,
-      borderColor: base.colors['--color-base_eerieblack'],
-      color: base.colors['--color-base_eerieblack'],
-    },
-    disabled: {
-      backgroundColor: base.colors['--color-base_platinum'],
-    },
-    icon: {
-      color: base.colors['--color-base_silver'],
-    },
-    iconFilled: {
-      color: base.colors['--color-base_sonicsilver'],
-    },
-    iconError: {
-      color: base.colors['--color-fire_opal'],
-    },
-    placeholder: {
-      fontFamily: base.font.regular,
-      fontSize: 13,
-      color: base.colors['--color-base_silver'],
-      transform: [
-        {
-          translateY: -2,
-        },
-      ],
-    },
-    placeholderColor: {
-      color: base.colors['--color-base_silver'],
-    },
-    charCount: {
-      bottom: 8,
-      right: 8,
-      fontFamily: base.font.regular,
-      fontSize: 10,
-      position: 'absolute',
-      color: base.colors['--color-base_lightgray'],
-      zIndex: 10,
-    },
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
+        borderBottomLeftRadius: 8,
+        height: 44,
+        paddingRight: 14,
+        paddingLeft: 14,
+      },
+      suffixText: {
+        color: base.colors['--color-base_silver'],
+      },
+      errorInput: {
+        color: base.colors['--color-fire_opal'],
+      },
+      error: {
+        borderColor: base.colors['--color-fire_opal'],
+        color: base.colors['--color-fire_opal'],
+      },
+      empty: {
+        fontFamily: base.font.medium,
+      },
+      typing: {
+        fontFamily: base.font.semibold,
+        color: base.colors['--color-base_eerieblack'],
+        borderColor: base.colors['--color-base_eerieblack'],
+      },
+      filled: {
+        fontFamily: base.font.semibold,
+        borderColor: base.colors['--color-base_eerieblack'],
+        color: base.colors['--color-base_eerieblack'],
+      },
+      disabled: {
+        backgroundColor: base.colors['--color-base_platinum'],
+      },
+      icon: {
+        color: base.colors['--color-base_silver'],
+      },
+      iconFilled: {
+        color: base.colors['--color-base_sonicsilver'],
+      },
+      iconError: {
+        color: base.colors['--color-fire_opal'],
+      },
+      placeholder: {
+        fontFamily: base.font.regular,
+        fontSize: 13,
+        color: base.colors['--color-base_silver'],
+        transform: [
+          {
+            translateY: -2,
+          },
+        ],
+      },
+      placeholderColor: {
+        color: base.colors['--color-base_silver'],
+      },
+      charCount: {
+        bottom: 8,
+        right: 8,
+        fontFamily: base.font.regular,
+        fontSize: 10,
+        position: 'absolute',
+        color: base.colors['--color-base_lightgray'],
+        zIndex: 10,
+      },
 
-    errorLabel: {
-      fontFamily: base.font[600],
-      color: base.colors['--color-fire_opal'],
+      errorLabel: {
+        fontFamily: base.font[600],
+        color: base.colors['--color-fire_opal'],
+      },
+    },
+    checkbox: {
+      title: {
+        fontFamily: base.font[600],
+        fontSize: 11,
+        color: base.colors['--color-base_eerieblack'],
+      },
+    },
+    radio: {
+      title: {
+        fontFamily: base.font[600],
+        fontSize: 12,
+        color: base.colors['--color-base_eerieblack'],
+        textAlign: 'left',
+      },
     },
   },
   label: {
@@ -127,60 +144,62 @@ let styles = {
       color: base.colors['--color-base_eerieblack'],
     },
   },
-  button: {
+  buttons: {
     button: {
-      backgroundColor: base.colors['--color-green_turquoise'],
-      color: base.colors['--color-base_white'],
-      borderColor: base.colors['--color-green_turquoise'],
-    },
-    title: {
-      fontSize: base.size.primary,
-      fontFamily: base.font[800],
-      color: '#fff',
-    },
-    titleoutline: {
-      color: base.colors['--color-base_eerieblack'],
-    },
-    outline: {
-      borderColor: base.colors['--color-base_eerieblack'],
-    },
-    filledBlack: {
-      borderColor: base.colors['--color-base_eerieblack'],
+      button: {
+        backgroundColor: base.colors['--color-green_turquoise'],
+        color: base.colors['--color-base_white'],
+        borderColor: base.colors['--color-green_turquoise'],
+      },
+      title: {
+        fontSize: base.size.primary,
+        fontFamily: base.font[800],
+        color: '#fff',
+      },
+      titleoutline: {
+        color: base.colors['--color-base_eerieblack'],
+      },
+      outline: {
+        borderColor: base.colors['--color-base_eerieblack'],
+      },
+      filledBlack: {
+        borderColor: base.colors['--color-base_eerieblack'],
 
-      backgroundColor: base.colors['--color-base_eerieblack'],
+        backgroundColor: base.colors['--color-base_eerieblack'],
+      },
+      disabled: {
+        backgroundColor: base.colors['--color-base_silver'],
+      },
     },
-    disabled: {
-      backgroundColor: base.colors['--color-base_silver'],
+    backButton: {
+      ctn: {
+        borderColor: base.colors['--color-base_platinum'],
+        backgroundColor: base.colors['--color-base_platinum'],
+      },
+      icon: {
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+      },
+      title: {
+        fontSize: base.size.primary,
+        fontFamily: base.font[600],
+        color: base.colors['--color-base_eerieblack'],
+      },
     },
-  },
-  backButton: {
-    ctn: {
-      borderColor: base.colors['--color-base_platinum'],
-      backgroundColor: base.colors['--color-base_platinum'],
-    },
-    icon: {
-      fontSize: base.size.primary,
-      color: base.colors['--color-base_eerieblack'],
-    },
-    title: {
-      fontSize: base.size.primary,
-      fontFamily: base.font[600],
-      color: base.colors['--color-base_eerieblack'],
-    },
-  },
-  buttonTabs: {
-    ctn: {
-      borderColor: base.colors['--color-base_platinum'],
-      backgroundColor: base.colors['--color-base_platinum'],
-    },
-    icon: {
-      fontSize: base.size.primary,
-      color: base.colors['--color-base_eerieblack'],
-    },
-    title: {
-      fontFamily: base.font[600],
-      fontSize: base.size.primary,
-      color: base.colors['--color-base_eerieblack'],
+    buttonTabs: {
+      ctn: {
+        borderColor: base.colors['--color-base_platinum'],
+        backgroundColor: base.colors['--color-base_platinum'],
+      },
+      icon: {
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+      },
+      title: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+      },
     },
   },
   loaders: {

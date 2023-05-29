@@ -1,19 +1,23 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import React, { ScrollView } from 'react-native';
 import {
   BaseText,
+  Box,
   Button,
+  CheckBox,
   Divider,
   FormInput,
   Input,
   Label,
+  Radio,
 } from 'react-native-microkit-rn';
 import * as yup from 'yup';
 export type FormValues = {
   email: string;
   password: string;
+  terms: string;
 };
 const schema = yup
   .object()
@@ -34,6 +38,8 @@ const InputHome: FC = () => {
   const handleSubmit = () => {
     methodsForm.handleSubmit(submit)();
   };
+  const [radio, setRadio] = useState(true);
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -66,6 +72,8 @@ const InputHome: FC = () => {
             '#898989',
           ]}
         />
+        <Divider type="h" />
+        <Label title="Mask suport" />
         <Input
           placeholder="(__) _________"
           name="phone"
@@ -90,10 +98,29 @@ const InputHome: FC = () => {
           pressEnterBlur={true}
         />
         <Divider type="h" />
+        <Label title="Checkbox" />
+        <CheckBox
+          name="term"
+          title={'Terms and Policies'}
+          control={methodsForm.control}
+        />
+        <Label title="Radio" />
+        <Radio
+          onClick={() => {
+            setRadio((e) => !e);
+          }}
+          active={radio}
+          item={1}
+          label={'Radio Button'}
+          style={{
+            width: '100%',
+          }}
+        />
+        <Divider type="h" />
         <BaseText title="Form Input Example" />
         <FormInput
           name="name"
-          label="FullName"
+          label="Label here"
           placeholder="write here..."
           type="default"
           preffix={'icon_userlinear'}
