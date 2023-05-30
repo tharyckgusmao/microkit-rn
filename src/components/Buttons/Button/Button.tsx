@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import BaseText from '../../BaseKit/BaseText/BaseText';
 import Box from '../../BaseKit/Box/Box';
-import { useStyle } from './styles';
-// import  from "@/components/loaders/Spinner/Spinner"
+import { makeStyle } from '../../../hooks/makeStyle';
+import type { TThemeBase } from '../../../helper/theme';
 
 type IButton = {
   onPress?: () => void;
@@ -26,6 +26,10 @@ type IButton = {
   loading?: boolean;
   loadingVariant?: 'center' | 'left' | 'right';
 };
+
+export const useStyle = makeStyle((theme: TThemeBase) => {
+  return theme?.components?.buttons?.button;
+});
 
 const Button: FC<IButton> = ({
   onPress,

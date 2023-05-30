@@ -10,6 +10,7 @@ import {
   Divider,
   FormInput,
   Input,
+  InputOtp,
   Label,
   Radio,
 } from 'react-native-microkit-rn';
@@ -18,12 +19,14 @@ export type FormValues = {
   email: string;
   password: string;
   terms: string;
+  otp: string;
 };
 const schema = yup
   .object()
   .shape({
     name: yup.string().required(),
     password: yup.string().required(),
+    otp: yup.string().required(),
   })
   .required();
 const InputHome: FC = () => {
@@ -97,6 +100,20 @@ const InputHome: FC = () => {
           preffix={'icon_calendarlinear'}
           pressEnterBlur={true}
         />
+        <Divider type="h" />
+        <Label title="Otp" />
+        <InputOtp control={methodsForm.control} name="otp" size={5} />
+        <InputOtp
+          control={methodsForm.control}
+          name="otp2"
+          size={5}
+          colorsInputAnimate={[
+            'rgba(236, 130, 116,1)',
+            'rgba(225, 225, 225,1)',
+            'rgba(153, 36, 255,1)',
+          ]}
+        />
+
         <Divider type="h" />
         <Label title="Checkbox" />
         <CheckBox

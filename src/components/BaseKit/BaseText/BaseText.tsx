@@ -8,16 +8,14 @@ type IBaseText = {
   onPress?: () => void;
   numberOfLines?: number;
 };
-const useStyle = (props: any) =>
-  makeStyle((theme) => {
-    return {
-      default: {
-        fontSize: theme?.base.size?.medium,
-        fontFamily: theme?.base.font?.[500],
-        ...props,
-      },
-    };
-  })();
+const useStyle = makeStyle((theme) => {
+  return {
+    default: {
+      fontSize: theme?.base.size?.medium,
+      fontFamily: theme?.base.font?.[500],
+    },
+  };
+});
 
 const BaseText: React.FC<IBaseText> = ({
   title,
@@ -26,10 +24,10 @@ const BaseText: React.FC<IBaseText> = ({
   onPress,
   numberOfLines,
 }) => {
-  const styles = useStyle(style);
+  const styles = useStyle();
   const props = { numberOfLines, onPress };
   return (
-    <Text style={styles.default} {...props}>
+    <Text style={{ ...styles.default, ...style }} {...props}>
       {title || children}
     </Text>
   );

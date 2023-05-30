@@ -15,6 +15,7 @@ import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
 import Loaders from './pages/Loaders/Loaders';
+import Transitions from './pages/transitions/transitions';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -127,6 +128,10 @@ let styles = {
         fontSize: 11,
         color: base.colors['--color-base_eerieblack'],
       },
+      errorLabel: {
+        fontFamily: base.font[600],
+        color: base.colors['--color-fire_opal'],
+      },
     },
     radio: {
       title: {
@@ -134,6 +139,32 @@ let styles = {
         fontSize: 12,
         color: base.colors['--color-base_eerieblack'],
         textAlign: 'left',
+      },
+    },
+    otp: {
+      placeholder: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_platinum'],
+      },
+      fakeText: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+      },
+      typing: {
+        fontFamily: base.font[600],
+        color: base.colors['--color-base_eerieblack'],
+        borderColor: base.colors['--color-base_eerieblack'],
+      },
+      filled: {
+        fontFamily: base.font[600],
+        borderColor: base.colors['--color-base_eerieblack'],
+        color: base.colors['--color-base_eerieblack'],
+      },
+      errorLabel: {
+        fontFamily: base.font[600],
+        color: base.colors['--color-fire_opal'],
       },
     },
   },
@@ -267,6 +298,11 @@ export default function App() {
           <Stack.Screen
             name="Loaders"
             component={Loaders}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="Transitions"
+            component={Transitions}
             options={{ headerShown: true }}
           />
         </Stack.Navigator>

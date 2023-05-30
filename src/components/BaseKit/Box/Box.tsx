@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, PropsWithChildren, useMemo } from 'react';
+import type { PointerEvents } from 'react-native';
 import type { ViewStyle } from 'react-native';
 import { GestureResponderEvent, View } from 'react-native';
 
@@ -20,7 +21,7 @@ type TBox = {
   jEnd?: boolean;
   position?: string;
   boxSizing?: string;
-  pointerEvents?: PointerEvent;
+  pointerEvents?: 'none' | 'all';
   onPress?: (event: GestureResponderEvent) => void;
   onPressIn?: (event: GestureResponderEvent) => void;
   onPressOut?: (event: GestureResponderEvent) => void;

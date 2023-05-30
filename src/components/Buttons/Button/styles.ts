@@ -1,10 +1,5 @@
 import { StyleSheet } from 'react-native';
-import type { TThemeBase } from '../../../contexts/themeContext';
-import { makeStyle } from '../../../hooks/makeStyle';
 
-export const useStyle = makeStyle((theme: TThemeBase) => {
-  return theme?.components?.button;
-});
 export const styles = StyleSheet.create({
   ctn: {
     width: '100%',
@@ -34,7 +29,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 12,
-    fontFamily: 'default',
+    fontFamily: 'Arial',
     color: '#fff',
   },
   titledefault: {

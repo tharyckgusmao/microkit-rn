@@ -1,11 +1,23 @@
 import { StyleSheet } from 'react-native';
-import type { TThemeBase } from '../../..//contexts/themeContext';
-import { makeStyle } from '../../../hooks/makeStyle';
 
-export const useStyle = makeStyle((theme: TThemeBase) => {
-  return theme?.components?.input;
+export const styleInputError = StyleSheet.create({
+  errorCtn: {
+    position: 'absolute',
+    bottom: -18,
+    right: 0,
+    fontWeight: '600',
+    width: '100%',
+    zIndex: 1,
+    textAlign: 'right',
+  },
+  errorLabel: {
+    fontSize: 9,
+    color: '#000',
+    letterSpacing: 1,
+    textAlign: 'right',
+    textTransform: 'uppercase',
+  },
 });
-
 export const style = StyleSheet.create({
   ctn: {
     borderTopLeftRadius: 12,
@@ -101,31 +113,5 @@ export const style = StyleSheet.create({
     position: 'absolute',
     zIndex: 10,
   },
-});
-
-export const styleInputError = StyleSheet.create({
-  errorCtn: {
-    position: 'absolute',
-    bottom: -20,
-    right: 0,
-    fontWeight: '600',
-    width: '100%',
-    paddingTop: 12,
-    paddingRight: 6,
-    paddingBottom: 5,
-    paddingLeft: 6,
-    zIndex: 1,
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 8,
-    borderBottomLeftRadius: 8,
-    textAlign: 'right',
-  },
-  errorLabel: {
-    fontSize: 9,
-    color: '#000',
-    letterSpacing: 1,
-    textAlign: 'right',
-    textTransform: 'uppercase',
-  },
+  ...styleInputError,
 });

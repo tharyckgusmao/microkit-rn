@@ -21,8 +21,6 @@ import React, {
 import type { FormValues } from 'example/src/pages/Input/Input';
 import IMask from 'imask';
 import Animated, {
-  FadeInUp,
-  FadeOutUp,
   interpolateColor,
   useAnimatedStyle,
   useDerivedValue,
@@ -32,9 +30,8 @@ import BaseText from '../../BaseKit/BaseText/BaseText';
 import Box from '../../BaseKit/Box/Box';
 import Icon from '../../BaseKit/Icon/Icon';
 import type { IconsId } from '../../BaseKit/Icon/generated/icons';
-import { masks } from './helpers';
-import { useStyle } from './styles';
 import ErrorLabel from '../ErrorLabel/ErrorLabel';
+import { masks } from './helpers';
 
 Animated.addWhitelistedNativeProps({ text: true });
 //@ts-ignore
@@ -168,6 +165,13 @@ export const RenderCharCount: FC<TCharCount> = ({
   return count;
 };
 Preffix.displayName = 'Input.CharCount';
+
+import type { TThemeBase } from '../../../helper/theme';
+import { makeStyle } from '../../../hooks/makeStyle';
+
+export const useStyle = makeStyle((theme: TThemeBase) => {
+  return theme?.components?.inputs?.input;
+});
 
 export const Input: FC<TInput> = ({
   placeholder,
