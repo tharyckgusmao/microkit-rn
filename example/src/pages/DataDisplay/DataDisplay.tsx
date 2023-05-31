@@ -1,6 +1,12 @@
 import type { FC } from 'react';
 import { ScrollView } from 'react-native';
-import { Avatar, BaseText, Box, Label } from 'react-native-microkit-rn';
+import {
+  Avatar,
+  BaseText,
+  Box,
+  GenericCard,
+  Label,
+} from 'react-native-microkit-rn';
 import React from 'react';
 const DataDisplay: FC = () => {
   let font = require('../../../assets/fonts/ttf/Montserrat-SemiBold.ttf');
@@ -96,6 +102,28 @@ const DataDisplay: FC = () => {
           colors={['#8fbeff', '#61c8e5', '#6b17d2']}
           mode="gradient"
         />
+      </Box>
+      <Label title="Generic Card" />
+      <Box column style={{ gap: 20 }}>
+        <GenericCard
+          title="Lorem"
+          description={'lorem'}
+          image={{ uri: 'https://unsplash.it/400/400?image=1' }}
+        />
+        <Box
+          style={{
+            backgroundColor: '#fff',
+            borderRadius: 14,
+            padding: 20,
+          }}
+        >
+          <GenericCard
+            title="Lorem"
+            description={'lorem'}
+            image={{ uri: 'https://unsplash.it/400/400?image=1' }}
+            button={'Lorem'}
+          />
+        </Box>
       </Box>
     </ScrollView>
   );

@@ -1,8 +1,10 @@
+import { PortalProvider } from '@gorhom/portal';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import merge from 'lodash.merge';
 import * as React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   IconFont,
   TThemeStructure,
@@ -15,9 +17,11 @@ import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
 import Loaders from './pages/Loaders/Loaders';
-import Transitions from './pages/transitions/transitions';
-import Steps from './pages/Steps/Steps';
 import Progress from './pages/Progress/Progress';
+import Steps from './pages/Steps/Steps';
+import Transitions from './pages/transitions/transitions';
+import Modals from './pages/Modals/Modals';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -251,6 +255,57 @@ let styles = {
       },
     },
   },
+  display: {
+    generic: {
+      title: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+        marginBottom: 6,
+        textAlign: 'left',
+      },
+      description: {
+        fontFamily: base.font[500],
+        fontSize: 12,
+        color: base.colors['--color-base_eerieblack'],
+        textAlign: 'left',
+      },
+    },
+  },
+  modals: {
+    confirm: {
+      title: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+      },
+      ok: {
+        fontFamily: base.font[600],
+
+        fontSize: base.size.primary,
+
+        color: base.colors['--color-fire_opal'],
+      },
+      not: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+
+        color: base.colors['--color-base_sonicsilver'],
+      },
+    },
+    header: {
+      title: {
+        fontFamily: base.font[600],
+        fontSize: base.size.regular,
+        color: base.colors['--color-base_eerieblack'],
+      },
+    },
+    base: {
+      closeButtonIcon: {
+        color: base.colors['--color-base_lightgray'],
+      },
+    },
+  },
 };
 let components = merge(defaultTheme.components, styles);
 
@@ -273,61 +328,72 @@ export default function App() {
     return null;
   }
   return (
-    <ThemeProvider initialTheme={theme}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            gestureEnabled: false,
-          }}
-          initialRouteName={'Home'}
-        >
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Icons"
-            component={Icons}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Input"
-            component={Input}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Buttons"
-            component={Buttons}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="DataDisplay"
-            component={DataDisplay}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Loaders"
-            component={Loaders}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Transitions"
-            component={Transitions}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Steps"
-            component={Steps}
-            options={{ headerShown: true }}
-          />
-          <Stack.Screen
-            name="Progress"
-            component={Progress}
-            options={{ headerShown: true }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <PortalProvider>
+        <BottomSheetModalProvider>
+          <ThemeProvider initialTheme={theme}>
+            <NavigationContainer>
+              <Stack.Navigator
+                screenOptions={{
+                  gestureEnabled: false,
+                }}
+                initialRouteName={'Home'}
+              >
+                <Stack.Screen
+                  name="Home"
+                  component={Home}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Icons"
+                  component={Icons}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Input"
+                  component={Input}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Buttons"
+                  component={Buttons}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="DataDisplay"
+                  component={DataDisplay}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Loaders"
+                  component={Loaders}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Transitions"
+                  component={Transitions}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Steps"
+                  component={Steps}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Progress"
+                  component={Progress}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Modals"
+                  component={Modals}
+                  options={{ headerShown: true }}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </ThemeProvider>
+        </BottomSheetModalProvider>
+      </PortalProvider>
+    </GestureHandlerRootView>
   );
 }

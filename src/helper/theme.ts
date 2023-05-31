@@ -20,6 +20,13 @@ import { styles as stylesWorm } from '../components/Steps/Worm/styles';
 
 import { styles as stylesline } from '../components/Progress/LineProgress/styles';
 
+import { styles as stylesGeneric } from '../components/DataDisplay/GenericCard/styles';
+
+import { styles as stylesConfirm } from '../components/Modals/ConfirmModal/styles';
+import { styles as stylesBase } from '../components/Modals/Modal/styles';
+import { styles as stylesHeader } from '../components/Modals/BottomSheet/styles';
+import { styles as stylesBottom } from '../components/Modals/BottomSheetBasic/styles';
+
 let sizesDefault = {
   primary: 15,
 };
@@ -69,6 +76,15 @@ let components = {
   },
   progress: {
     line: stylesline,
+  },
+  display: {
+    generic: stylesGeneric,
+  },
+  modals: {
+    confirm: stylesConfirm,
+    base: stylesBase,
+    bottom: stylesBottom,
+    header: stylesHeader,
   },
 };
 export const defaultTheme = {

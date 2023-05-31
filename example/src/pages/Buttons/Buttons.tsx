@@ -89,6 +89,37 @@ const Buttons: FC = () => {
         title="Suffix"
         preffix={<Icon name={'icon_arrowleftbold'} />}
       />
+      <Box row style={{ gap: 10 }}>
+        <Button
+          onPress={onClick}
+          title={<Icon name={'icon_arrowleftbold'} />}
+          stylesCtn={{
+            width: 40,
+          }}
+          style={{
+            borderTopLeftRadius: 100,
+            borderTopRightRadius: 100,
+            borderBottomRightRadius: 100,
+            borderBottomLeftRadius: 100,
+            height: 40,
+          }}
+        />
+        <Button
+          onPress={onClick}
+          type={'outline'}
+          title={<Icon name={'icon_adduserbold'} />}
+          stylesCtn={{
+            width: 40,
+          }}
+          style={{
+            borderTopLeftRadius: 100,
+            borderTopRightRadius: 100,
+            borderBottomRightRadius: 100,
+            borderBottomLeftRadius: 100,
+            height: 40,
+          }}
+        />
+      </Box>
       <BaseText title="Back Button" />
       <Box row style={{ gap: 10 }}>
         <BackButton title="Back..." onClick={onClick} />

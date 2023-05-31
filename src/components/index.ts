@@ -18,6 +18,7 @@ export { default as BackButton } from './Buttons/BackButton/BackButton';
 export { default as ButtonTabs } from './Buttons/ButtonTabs/ButtonTabs';
 
 export { default as Avatar } from './DataDisplay/Avatar/Avatar';
+export { default as GenericCard } from './DataDisplay/GenericCard/GenericCard';
 
 export { default as Dots } from './Loaders/Dots/Dots';
 export { default as Skeleton } from './Loaders/Skeleton/Skeleton';
@@ -31,3 +32,11 @@ export { default as StepDots } from './Steps/Dots/Dots';
 
 export { default as LineProgress } from './Progress/LineProgress/LineProgress';
 export { default as LineProgressSkia } from './Progress/LineProgress/LineProgress.skia';
+
+export { default as BottomSheet } from './Modals/BottomSheet/BottomSheet';
+export {
+  default as BottomSheetBasic,
+  IBottomSheetHandle,
+} from './Modals/BottomSheetBasic/BottomSheetBasic';
+export { default as ConfirmModal } from './Modals/ConfirmModal/ConfirmModal';
+export { default as Modal } from './Modals/Modal/ModalPortal';

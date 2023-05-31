@@ -37,6 +37,10 @@ const routes = [
     title: 'Progress',
     route: 'Progress',
   },
+  {
+    title: 'Modals',
+    route: 'Modals',
+  },
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {

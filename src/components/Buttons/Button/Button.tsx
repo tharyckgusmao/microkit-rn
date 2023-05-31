@@ -15,7 +15,7 @@ type IButton = {
   onPress?: () => void;
   type?: 'default' | 'outline' | 'filledBlack' | '' | null;
   disabled?: boolean;
-  title?: string;
+  title?: string | React.ReactNode;
   preffix?: JSX.Element;
   suffix?: JSX.Element;
   style?: ViewStyle;
