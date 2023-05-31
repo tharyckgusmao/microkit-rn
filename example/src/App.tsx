@@ -17,6 +17,7 @@ import Input from './pages/Input/Input';
 import Loaders from './pages/Loaders/Loaders';
 import Transitions from './pages/transitions/transitions';
 import Steps from './pages/Steps/Steps';
+import Progress from './pages/Progress/Progress';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -241,10 +242,19 @@ let styles = {
       },
     },
   },
+  progress: {
+    line: {
+      title: {
+        fontFamily: base.font[600],
+        fontSize: base.size.primary,
+        color: base.colors['--color-base_eerieblack'],
+      },
+    },
+  },
 };
 let components = merge(defaultTheme.components, styles);
 
-let theme = { base, components };
+export let theme = { base, components };
 
 export type APPTheme = TThemeStructure<typeof base, typeof components>;
 
@@ -309,6 +319,11 @@ export default function App() {
           <Stack.Screen
             name="Steps"
             component={Steps}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="Progress"
+            component={Progress}
             options={{ headerShown: true }}
           />
         </Stack.Navigator>

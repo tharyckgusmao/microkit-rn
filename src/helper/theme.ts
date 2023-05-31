@@ -18,6 +18,8 @@ import { styles as stylesOpacity } from '../components/Transitions/TransitionOpa
 
 import { styles as stylesWorm } from '../components/Steps/Worm/styles';
 
+import { styles as stylesline } from '../components/Progress/LineProgress/styles';
+
 let sizesDefault = {
   primary: 15,
 };
@@ -64,6 +66,9 @@ let components = {
   steps: {
     worm: stylesWorm,
     dots: stylesWorm,
+  },
+  progress: {
+    line: stylesline,
   },
 };
 export const defaultTheme = {

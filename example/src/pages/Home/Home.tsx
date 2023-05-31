@@ -33,6 +33,10 @@ const routes = [
     title: 'Steps',
     route: 'Steps',
   },
+  {
+    title: 'Progress',
+    route: 'Progress',
+  },
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {
