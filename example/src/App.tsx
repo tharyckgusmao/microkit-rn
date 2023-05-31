@@ -16,6 +16,7 @@ import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
 import Loaders from './pages/Loaders/Loaders';
 import Transitions from './pages/transitions/transitions';
+import Steps from './pages/Steps/Steps';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -303,6 +304,11 @@ export default function App() {
           <Stack.Screen
             name="Transitions"
             component={Transitions}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
+            name="Steps"
+            component={Steps}
             options={{ headerShown: true }}
           />
         </Stack.Navigator>

@@ -25,3 +25,6 @@ export { default as Skeleton } from './Loaders/Skeleton/Skeleton';
 export { default as FadeInView } from './Transitions/FadeInView/FadeInView';
 export { default as TransitionOpacity } from './Transitions/TransitionOpacity/TransitionOpacity';
 export { default as TransitionHeight } from './Transitions/TransitionHeight/TransitionHeight';
+
+export { default as Worm } from './Steps/Worm/Worm';
+export { default as StepDots } from './Steps/Dots/Dots';

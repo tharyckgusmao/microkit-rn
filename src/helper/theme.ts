@@ -16,6 +16,8 @@ import { styles as stylesOtp } from '../components/Inputs/InputOtp/styles';
 
 import { styles as stylesOpacity } from '../components/Transitions/TransitionOpacity/styles';
 
+import { styles as stylesWorm } from '../components/Steps/Worm/styles';
+
 let sizesDefault = {
   primary: 15,
 };
@@ -42,27 +44,26 @@ let base = {
 let components = {
   inputs: {
     input: { ...styleInput, ...styleInputError },
-    checkbox: {
-      ...stylesCheckBox,
-    },
-    radio: {
-      ...stylesRadio,
-    },
-    otp: {
-      ...stylesOtp,
-    },
+    checkbox: stylesCheckBox,
+
+    radio: stylesRadio,
+    otp: stylesOtp,
   },
-  label: { ...styleLabel },
+  label: styleLabel,
   buttons: {
-    button: { ...styleButton },
-    backButton: { ...stylesBackButton },
-    buttonTabs: { ...styleButtonTabs },
+    button: styleButton,
+    backButton: stylesBackButton,
+    buttonTabs: styleButtonTabs,
   },
   loaders: {
-    dot: { ...stylesDots },
+    dot: stylesDots,
   },
   transitions: {
-    opacity: { ...stylesOpacity },
+    opacity: stylesOpacity,
+  },
+  steps: {
+    worm: stylesWorm,
+    dots: stylesWorm,
   },
 };
 export const defaultTheme = {

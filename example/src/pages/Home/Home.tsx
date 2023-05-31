@@ -29,6 +29,10 @@ const routes = [
     title: 'Transitions',
     route: 'Transitions',
   },
+  {
+    title: 'Steps',
+    route: 'Steps',
+  },
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {
