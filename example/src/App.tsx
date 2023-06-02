@@ -1,3 +1,4 @@
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { PortalProvider } from '@gorhom/portal';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -17,11 +18,11 @@ import Home from './pages/Home/Home';
 import Icons from './pages/Icons/Icons';
 import Input from './pages/Input/Input';
 import Loaders from './pages/Loaders/Loaders';
+import Modals from './pages/Modals/Modals';
 import Progress from './pages/Progress/Progress';
+import Sliders from './pages/Sliders/Sliders';
 import Steps from './pages/Steps/Steps';
 import Transitions from './pages/transitions/transitions';
-import Modals from './pages/Modals/Modals';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 const Stack = createNativeStackNavigator();
 
 let base = {
@@ -387,6 +388,11 @@ export default function App() {
                 <Stack.Screen
                   name="Modals"
                   component={Modals}
+                  options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                  name="Sliders"
+                  component={Sliders}
                   options={{ headerShown: true }}
                 />
               </Stack.Navigator>

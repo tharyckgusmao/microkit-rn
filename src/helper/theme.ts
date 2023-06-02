@@ -17,6 +17,7 @@ import { styles as stylesOtp } from '../components/Inputs/InputOtp/styles';
 import { styles as stylesOpacity } from '../components/Transitions/TransitionOpacity/styles';
 
 import { styles as stylesWorm } from '../components/Steps/Worm/styles';
+import { styles as stylesBar } from '../components/Steps/Bar/styles';
 
 import { styles as stylesline } from '../components/Progress/LineProgress/styles';
 
@@ -73,6 +74,7 @@ let components = {
   steps: {
     worm: stylesWorm,
     dots: stylesWorm,
+    bar: stylesBar,
   },
   progress: {
     line: stylesline,

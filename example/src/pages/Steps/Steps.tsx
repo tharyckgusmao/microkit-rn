@@ -6,6 +6,7 @@ import {
   Label,
   StepDots as Dots,
   Worm,
+  Bar,
 } from 'react-native-microkit-rn';
 import { useSharedValue } from 'react-native-reanimated';
 
@@ -35,6 +36,8 @@ const Steps: FC = () => {
       <Worm active={active} length={4} />
       <Label title="Opacity Style" />
       <Dots active={active} length={4} duration={200} />
+      <Label title="Bar Style" />
+      <Bar active={active} length={4} duration={200} size={14} />
     </ScrollView>
   );
 };

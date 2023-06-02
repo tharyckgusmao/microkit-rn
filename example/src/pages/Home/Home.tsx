@@ -41,6 +41,10 @@ const routes = [
     title: 'Modals',
     route: 'Modals',
   },
+  {
+    title: 'Sliders',
+    route: 'Sliders',
+  },
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {
@@ -66,7 +70,10 @@ const Home = () => {
   const styles = useStyle();
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ paddingBottom: 60 }}
+    >
       {routes.map((e, k) => {
         return (
           <>

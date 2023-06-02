@@ -29,6 +29,7 @@ export { default as TransitionHeight } from './Transitions/TransitionHeight/Tran
 
 export { default as Worm } from './Steps/Worm/Worm';
 export { default as StepDots } from './Steps/Dots/Dots';
+export { default as Bar } from './Steps/Bar/Bar';
 
 export { default as LineProgress } from './Progress/LineProgress/LineProgress';
 export { default as LineProgressSkia } from './Progress/LineProgress/LineProgress.skia';
@@ -40,3 +41,5 @@ export {
 } from './Modals/BottomSheetBasic/BottomSheetBasic';
 export { default as ConfirmModal } from './Modals/ConfirmModal/ConfirmModal';
 export { default as Modal } from './Modals/Modal/ModalPortal';
+
+export { default as Slider } from './Sliders/Slider/Slider';
