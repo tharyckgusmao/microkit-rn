@@ -93,17 +93,12 @@ export const style = StyleSheet.create({
   },
   placeholderCtn: {
     display: 'flex',
-    height: 40,
 
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
   placeholder: {
-    transform: [
-      {
-        translateY: -2,
-      },
-    ],
+    color: '#d9d9d9',
   },
   placeholderColor: { color: '#d9d9d9' },
   charCount: {

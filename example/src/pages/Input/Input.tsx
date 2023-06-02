@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState, type FC } from 'react';
+import { useState, type FC, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import React, { ScrollView } from 'react-native';
 import {
@@ -13,6 +13,8 @@ import {
   InputOtp,
   Label,
   Radio,
+  Select,
+  parserParamsCursor,
 } from 'react-native-microkit-rn';
 import * as yup from 'yup';
 export type FormValues = {
@@ -20,6 +22,7 @@ export type FormValues = {
   password: string;
   terms: string;
   otp: string;
+  categories: any;
 };
 const schema = yup
   .object()
@@ -42,6 +45,34 @@ const InputHome: FC = () => {
     methodsForm.handleSubmit(submit)();
   };
   const [radio, setRadio] = useState(true);
+
+  const getAnimes = async (params: any) => {
+    const nextPageParams = parserParamsCursor(params);
+    let data = await (
+      await fetch('https://api.jikan.moe/v4/characters' + nextPageParams)
+    )?.json();
+
+    //example service api
+    let cursor = {
+      total: data?.pagination?.items?.count || 0,
+      nextPage: data?.pagination?.has_next_page
+        ? `/?page=${data?.pagination?.current_page + 1}`
+        : null,
+    };
+    let elements = data?.data?.map((e: any) => {
+      return {
+        data: e,
+        label: e.name,
+        id: e.mal_id,
+      };
+    });
+    return {
+      result: {
+        data: elements,
+        cursor,
+      },
+    };
+  };
 
   return (
     <ScrollView
@@ -132,6 +163,93 @@ const InputHome: FC = () => {
           style={{
             width: '100%',
           }}
+        />
+        <Divider type="h" />
+        <BaseText title="Select Example" />
+        <Select
+          placeholder="Test Select"
+          suffix={'icon_arrowdownbold'}
+          preffix={'icon_interestlinear'}
+          options={[]}
+          asyncFn={async () => {
+            return {
+              result: { data: [{ label: 'title', id: 2 }], cursor: null },
+            };
+          }}
+          modal={true}
+          search={false}
+          multiple={false}
+          control={methodsForm?.control}
+          snapPoints={[300]}
+          name="categories"
+          title="Select one or more"
+        />
+        <BaseText title="Select Example Multiple" />
+        <Select
+          placeholder="Test Select Multiple"
+          suffix={'icon_arrowdownbold'}
+          preffix={'icon_interestlinear'}
+          options={[]}
+          asyncFn={async () => {
+            return {
+              result: {
+                data: [
+                  { label: 'title', id: 2 },
+                  { label: 'title', id: 3 },
+                ],
+                cursor: null,
+              },
+            };
+          }}
+          modal={true}
+          search={false}
+          multiple={true}
+          control={methodsForm?.control}
+          snapPoints={[300]}
+          name="multiple"
+          title="Select one or more"
+        />
+        <BaseText title="Select support a search" />
+        <Select
+          placeholder="Test Select search"
+          suffix={'icon_arrowdownbold'}
+          preffix={'icon_interestlinear'}
+          options={[]}
+          asyncFn={async () => {
+            return {
+              result: {
+                data: [
+                  { label: 'title', id: 2 },
+                  { label: 'title', id: 3 },
+                ],
+                cursor: null,
+              },
+            };
+          }}
+          modal={true}
+          search={true}
+          multiple={true}
+          control={methodsForm?.control}
+          snapPoints={[500]}
+          name="search"
+          title="Select one or more"
+        />
+        <BaseText title="Example using service api" />
+        <Select
+          placeholder="Test Select"
+          suffix={'icon_arrowdownbold'}
+          preffix={'icon_interestlinear'}
+          options={[]}
+          asyncFn={getAnimes}
+          modal={true}
+          search={true}
+          multiple={true}
+          control={methodsForm?.control}
+          snapPoints={[500]}
+          factorSearch="q"
+          name="search"
+          title="Select one or more"
+          defaultParams={[['limit', '10']]}
         />
         <Divider type="h" />
         <BaseText title="Form Input Example" />

@@ -54,6 +54,28 @@ let base = {
 };
 let styles = {
   inputs: {
+    select: {
+      option: {
+        option: {
+          borderColor: base.colors['--color-base_platinum'],
+        },
+        title: {
+          fontFamily: base.font[600],
+          fontSize: base.size.regular,
+          color: base.colors['--color-base_eerieblack'],
+        },
+        icon: {
+          color: base.colors['--color-green_turquoise'],
+          marginLeft: 10,
+        },
+        active: {
+          borderColor: base.colors['--color-green_turquoise'],
+        },
+        activeTitle: {
+          color: base.colors['--color-green_turquoise'],
+        },
+      },
+    },
     input: {
       ctn: {
         fontFamily: base.font.regular,

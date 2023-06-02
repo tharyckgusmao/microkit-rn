@@ -8,6 +8,7 @@ export { default as Input } from './Inputs/Input/Input';
 export { default as CheckBox } from './Inputs/CheckBox/CheckBox';
 export { default as Radio } from './Inputs/Radio/Radio';
 export { default as InputOtp } from './Inputs/InputOtp/InputOtp';
+export { default as Select } from './Inputs/Select/Select/Select';
 
 export { default as Label } from './Inputs/Label/Label';
 

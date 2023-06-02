@@ -28,6 +28,9 @@ import { styles as stylesBase } from '../components/Modals/Modal/styles';
 import { styles as stylesHeader } from '../components/Modals/BottomSheet/styles';
 import { styles as stylesBottom } from '../components/Modals/BottomSheetBasic/styles';
 
+import { styles as stylesOption } from '../components/Inputs/Select/Option/styles';
+import { styles as stylesList } from '../components/Inputs/Select/List/styles';
+
 let sizesDefault = {
   primary: 15,
 };
@@ -58,6 +61,12 @@ let components = {
 
     radio: stylesRadio,
     otp: stylesOtp,
+
+    select: {
+      input: { ...styleInput, ...styleInputError },
+      option: stylesOption,
+      list: stylesList,
+    },
   },
   label: styleLabel,
   buttons: {

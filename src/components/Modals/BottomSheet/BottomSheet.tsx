@@ -157,7 +157,9 @@ export const BottomSheet: FC<IBottomSheet> = ({
       handleComponent={renderCustomHandle}
       backdropComponent={renderCustomBackDrop}
     >
-      <BottomSheetScrollView>{children}</BottomSheetScrollView>
+      <BottomSheetScrollView contentContainerStyle={{ flex: 1 }}>
+        {children}
+      </BottomSheetScrollView>
     </BottomSheetModal>
   );
 };

@@ -25,6 +25,7 @@ type IButton = {
   children?: React.ReactNode;
   loading?: boolean;
   loadingVariant?: 'center' | 'left' | 'right';
+  colorLoading?: string;
 };
 
 export const useStyle = makeStyle((theme: TThemeBase) => {
@@ -45,6 +46,7 @@ const Button: FC<IButton> = ({
   styleTitle,
   stylesCtn,
   stylesPreffix,
+  colorLoading,
 }) => {
   const styles = useStyle();
 
@@ -67,7 +69,7 @@ const Button: FC<IButton> = ({
         column
         aEnd
       >
-        <ActivityIndicator size={'small'} color="#fff" />
+        <ActivityIndicator size={'small'} color={colorLoading} />
       </Box>
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
