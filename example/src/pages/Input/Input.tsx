@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   CheckBox,
+  Counter,
   Divider,
   FormInput,
   Input,
@@ -82,7 +83,7 @@ const InputHome: FC = () => {
       },
     };
   };
-
+  const [qtde, setQtde] = useState(0);
   return (
     <ScrollView
       contentContainerStyle={{
@@ -93,6 +94,7 @@ const InputHome: FC = () => {
       <BaseText title="Label Example" />
       <Label title="Label" />
       <Divider type="h" />
+
       <BaseText title="Inputs Example" />
       <FormProvider {...methodsForm}>
         <Input
@@ -312,6 +314,17 @@ const InputHome: FC = () => {
           }}
         />
 
+        <Divider type="h" />
+        <BaseText title="Counter Example" />
+
+        <Counter
+          max={10}
+          min={0}
+          active={qtde}
+          onChange={(value) => {
+            setQtde((e) => value + e);
+          }}
+        />
         <Divider type="h" />
         <BaseText title="Form Input Example" />
         <FormInput

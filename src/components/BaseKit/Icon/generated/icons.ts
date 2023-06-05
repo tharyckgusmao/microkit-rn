@@ -63,6 +63,7 @@ export type IconsId =
   | 'icon_profilelinear'
   | 'icon_readerlinear'
   | 'icon_readview'
+  | 'icon_removebold'
   | 'icon_removesavebold'
   | 'icon_savebold'
   | 'icon_saveline'

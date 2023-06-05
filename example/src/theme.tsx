@@ -173,6 +173,12 @@ let styles = {
         color: base.colors['--color-fire_opal'],
       },
     },
+    counter: {
+      title: {
+        fontSize: 14,
+        fontFamily: base.font[600],
+      },
+    },
   },
   label: {
     title: {

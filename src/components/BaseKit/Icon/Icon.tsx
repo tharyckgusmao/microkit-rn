@@ -9,12 +9,13 @@ type IIcon = {
   size?: number;
   style?: TextStyle;
   onPress?: () => void;
+  color?: string;
 };
 
 const Icons = createIconSet(customFontGlyph, 'icons', 'icons.ttf');
 export const IconFont = { font: require('./generated/icons.ttf') };
 export const IconItems = customFontGlyph;
-const Icon: React.FC<IIcon> = ({ style, size = 12, name, onPress }) => {
+const Icon: React.FC<IIcon> = ({ style, size = 12, name, color, onPress }) => {
   return (
     <Icons
       pointerEvents="none"
@@ -27,6 +28,7 @@ const Icon: React.FC<IIcon> = ({ style, size = 12, name, onPress }) => {
       }}
       style={{
         ...style,
+        ...(color ? { color: color } : {}),
       }}
     />
   );

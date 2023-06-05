@@ -5,6 +5,8 @@ import {
 import { colorsDefault } from '../helper/colors';
 import { styles as styleLabel } from '../components/Inputs/Label/styles';
 import { styles as stylesCheckBox } from '../components/Inputs/CheckBox/styles';
+import { styles as stylesRage } from '../components/Inputs/Range/styles';
+import { styles as stylesCounter } from '../components/Inputs/Counter/styles';
 
 import { styles as styleButton } from '../components/Buttons/Button/styles';
 import { styles as stylesBackButton } from '../components/Buttons/BackButton/styles';
@@ -30,7 +32,6 @@ import { styles as stylesBottom } from '../components/Modals/BottomSheetBasic/st
 
 import { styles as stylesOption } from '../components/Inputs/Select/Option/styles';
 import { styles as stylesList } from '../components/Inputs/Select/List/styles';
-import { styles as stylesRage } from '../components/Inputs/Range/styles';
 
 let sizesDefault = {
   primary: 15,
@@ -69,6 +70,7 @@ let components = {
       list: stylesList,
     },
     range: stylesRage,
+    counter: stylesCounter,
   },
   label: styleLabel,
   buttons: {

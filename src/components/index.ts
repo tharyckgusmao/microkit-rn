@@ -10,6 +10,7 @@ export { default as Radio } from './Inputs/Radio/Radio';
 export { default as InputOtp } from './Inputs/InputOtp/InputOtp';
 export { default as Select } from './Inputs/Select/Select/Select';
 export { default as Range } from './Inputs/Range/Range';
+export { default as Counter } from './Inputs/Counter/Counter';
 
 export { default as Label } from './Inputs/Label/Label';
 
