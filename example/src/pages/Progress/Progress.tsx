@@ -1,4 +1,4 @@
-import { theme } from '../../App';
+import { theme } from '../../theme';
 import { type FC } from 'react';
 import React, { Dimensions, ScrollView } from 'react-native';
 import {

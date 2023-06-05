@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState, type FC, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import React, { ScrollView } from 'react-native';
+import React, { Dimensions, ScrollView } from 'react-native';
 import {
   BaseText,
   Box,
@@ -13,10 +13,19 @@ import {
   InputOtp,
   Label,
   Radio,
+  Range,
   Select,
   parserParamsCursor,
 } from 'react-native-microkit-rn';
 import * as yup from 'yup';
+const { width } = Dimensions.get('window');
+
+function toCurrency(value: string) {
+  'worklet';
+
+  return 'R$' + value;
+}
+
 export type FormValues = {
   email: string;
   password: string;
@@ -251,6 +260,58 @@ const InputHome: FC = () => {
           title="Select one or more"
           defaultParams={[['limit', '10']]}
         />
+        <Divider type="h" />
+        <BaseText title="Range Example fixed and formatter" />
+        <Range
+          sliderWidth={width - 40}
+          max={100}
+          onValueChange={() => {}}
+          step={1}
+          formatter={toCurrency}
+        />
+        <BaseText title="Range Example max x min" />
+        <Range
+          sliderWidth={width - 40}
+          min={50}
+          max={100}
+          range={true}
+          onValueChange={() => {}}
+          step={1}
+          formatter={(value) => {
+            'worklet';
+            return value + '%';
+          }}
+        />
+        <BaseText title="Range Example suport animation rotate" />
+        <Range
+          sliderWidth={width - 40}
+          min={50}
+          max={100}
+          range={true}
+          onValueChange={() => {}}
+          step={1}
+          rotateAnimation={true}
+          formatter={(value) => {
+            'worklet';
+            return value + '%';
+          }}
+        />
+        <BaseText title="Range Example suport chev" />
+        <Range
+          sliderWidth={width - 40}
+          min={50}
+          max={100}
+          range={true}
+          onValueChange={() => {}}
+          step={1}
+          showChev={false}
+          rotateAnimation={true}
+          formatter={(value) => {
+            'worklet';
+            return value + '%';
+          }}
+        />
+
         <Divider type="h" />
         <BaseText title="Form Input Example" />
         <FormInput

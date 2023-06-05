@@ -30,6 +30,7 @@ import { styles as stylesBottom } from '../components/Modals/BottomSheetBasic/st
 
 import { styles as stylesOption } from '../components/Inputs/Select/Option/styles';
 import { styles as stylesList } from '../components/Inputs/Select/List/styles';
+import { styles as stylesRage } from '../components/Inputs/Range/styles';
 
 let sizesDefault = {
   primary: 15,
@@ -67,6 +68,7 @@ let components = {
       option: stylesOption,
       list: stylesList,
     },
+    range: stylesRage,
   },
   label: styleLabel,
   buttons: {
