@@ -21,7 +21,9 @@ export { default as BackButton } from './Buttons/BackButton/BackButton';
 export { default as ButtonTabs } from './Buttons/ButtonTabs/ButtonTabs';
 
 export { default as Avatar } from './DataDisplay/Avatar/Avatar';
+export { default as AvatarGroup } from './DataDisplay/AvatarGroup/AvatarGroup';
 export { default as GenericCard } from './DataDisplay/GenericCard/GenericCard';
+export { default as Card } from './DataDisplay/Card/Card';
 
 export { default as Dots } from './Loaders/Dots/Dots';
 export { default as Skeleton } from './Loaders/Skeleton/Skeleton';

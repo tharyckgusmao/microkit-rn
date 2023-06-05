@@ -2,36 +2,43 @@ import {
   Blur,
   BlurMask,
   Canvas,
-  ColorMatrix,
   DataSourceParam,
-  DisplacementMap,
   Group,
   Paint,
-  Path,
   RoundedRect,
   Text,
-  Turbulence,
   rect,
   rrect,
   useCanvasRef,
   useFont,
 } from '@shopify/react-native-skia';
 import type { FC } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Platform } from 'react-native';
 import { default as RNFS } from 'react-native-fs';
-import React, { useCallback, useMemo } from 'react';
+import FastImage from 'react-native-fast-image';
+import type { Source } from 'react-native-fast-image';
+import type { ImageStyle } from 'react-native';
 const path = RNFS.TemporaryDirectoryPath;
 
-type IAvatar = {
+export type IAvatar = {
   onGenerate?: (url: string) => void;
   letter?: string;
   width: number;
   height: number;
-  mode: 'letter' | 'gradient';
-  colors: [string, string] | [string, string, string];
-  fontPath: DataSourceParam | null;
+  src?: number | Source | undefined;
+  mode: 'letter' | 'gradient' | 'image';
+  colors?: [string, string] | [string, string, string];
+  fontPath?: DataSourceParam | null;
   borderRadius: number;
-  fontSize: number;
+  fontSize?: number;
+  style?: ImageStyle;
+  styleStroke?: {
+    strokeWidth: number;
+    style: 'stroke';
+    color: string;
+  };
+  stroke?: boolean;
 };
 
 export const Avatar: FC<IAvatar> = ({
@@ -39,12 +46,31 @@ export const Avatar: FC<IAvatar> = ({
   letter,
   width,
   height,
+  src,
   mode = 'letter',
   borderRadius = 6,
   fontSize = 50,
   fontPath = '',
   colors = ['#d9d9d9', '#000'],
+  style,
+  styleStroke,
+  stroke,
 }) => {
+  if (mode === 'image') {
+    return (
+      <FastImage
+        source={src}
+        resizeMode={'cover'}
+        style={{
+          ...style,
+          borderRadius: borderRadius,
+          width: width,
+          height: height,
+        }}
+      />
+    );
+  }
+
   const ref = useCanvasRef();
 
   const font = useFont(fontPath, fontSize);
@@ -106,6 +132,7 @@ export const Avatar: FC<IAvatar> = ({
       style={{
         width,
         height,
+        ...style,
       }}
       pointerEvents="none"
     >
@@ -117,6 +144,16 @@ export const Avatar: FC<IAvatar> = ({
         r={borderRadius}
         color={colors[0]}
       />
+      {stroke && (
+        <RoundedRect
+          x={0}
+          y={0}
+          width={width}
+          height={height}
+          r={borderRadius}
+          {...styleStroke}
+        />
+      )}
       {mode === 'letter' && (
         <Text
           text={letter || '-'}

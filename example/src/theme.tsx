@@ -277,6 +277,19 @@ let styles = {
         textAlign: 'left',
       },
     },
+    avatargroup: {
+      title: {
+        fontFamily: base.font[700],
+      },
+    },
+    card: {
+      title: {
+        fontFamily: base.font[700],
+      },
+      description: {
+        fontFamily: base.font[500],
+      },
+    },
   },
   modals: {
     confirm: {
