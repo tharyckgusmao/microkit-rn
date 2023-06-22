@@ -9,8 +9,10 @@ import {
   Divider,
   GenericCard,
   Label,
+  Tag,
 } from 'react-native-microkit-rn';
 import React from 'react';
+import { theme } from 'example/src/theme';
 const DataDisplay: FC = () => {
   let font = require('../../../assets/fonts/ttf/Montserrat-SemiBold.ttf');
   return (
@@ -45,18 +47,93 @@ const DataDisplay: FC = () => {
         description="Create our wallter here"
         showButton={false}
       />
+
       <Card
         src={require('./wallet.png')}
         title="Setup you wallet"
         description="Create our wallter here"
-        mode="bottom"
-        buttonMode="end"
+        showButton={false}
+        mode="right"
+      />
+      <Divider type="h" spaccingBottom={20} spaccingTop={20} />
+      <Label title="Example Customize" />
+
+      <Card
+        src={require('./Ticket.png')}
+        title={
+          <Box row aCenter gap={10}>
+            <BaseText
+              style={{
+                fontSize: 34,
+                fontFamily: theme.base.font.bold,
+              }}
+            >
+              $10
+            </BaseText>
+            <Tag title="+0.5% extra" color={'#86f12d'} />
+          </Box>
+        }
+        titleInText={false}
+        description="Refer 2 friends in the last 30 days."
+        showButton={false}
+        mode="right"
+        styleImage={{
+          position: 'absolute',
+          left: -14,
+          bottom: -0,
+          width: 140,
+          height: 100,
+        }}
         style={{
-          width: 200,
+          padding: 0,
+        }}
+        stylesWrapper={{
+          overflow: 'hidden',
+          borderRadius: 8,
+          gap: 0,
+          padding: 14,
+        }}
+        styleDescription={{
+          fontSize: 16,
+          fontFamily: theme.base.font[400],
+          color: theme.base.colors['--color-base_sonicsilver'],
+          width: '60%',
         }}
       />
+      <Divider type="h" spaccingBottom={20} spaccingTop={20} />
+
+      <Box row gap={20}>
+        <Card
+          src={require('./wallet.png')}
+          title="Setup you wallet"
+          description="Create our wallter here"
+          mode="bottom"
+          buttonMode="end"
+          style={{
+            width: 200,
+          }}
+          styleImage={{
+            height: 80,
+          }}
+        />
+        <Card
+          src={require('./wallet.png')}
+          title="Setup you wallet"
+          description="Create our wallter here"
+          mode="bottom"
+          buttonMode="end"
+          infoMode="invert"
+          style={{
+            width: 200,
+          }}
+          styleImage={{
+            height: 80,
+          }}
+          propsDescription={{ numberOfLines: 1 }}
+        />
+      </Box>
       <Divider type="h" />
-      {/*       
+         
 
 
       <BaseText title="Avatar Examples" />
@@ -308,7 +385,7 @@ const DataDisplay: FC = () => {
             button={'Lorem'}
           />
         </Box>
-      </Box> */}
+      </Box>
     </ScrollView>
   );
 };

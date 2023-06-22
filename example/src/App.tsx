@@ -45,7 +45,7 @@ export default function App() {
                 screenOptions={{
                   gestureEnabled: false,
                 }}
-                initialRouteName={'DataDisplay'}
+                initialRouteName={'Home'}
               >
                 <Stack.Screen
                   name="Home"

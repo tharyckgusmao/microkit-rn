@@ -290,6 +290,11 @@ let styles = {
         fontFamily: base.font[500],
       },
     },
+    tag: {
+      title: {
+        fontFamily: base.font[600],
+      },
+    },
   },
   modals: {
     confirm: {

@@ -26,6 +26,7 @@ import { styles as stylesline } from '../components/Progress/LineProgress/styles
 import { styles as stylesGeneric } from '../components/DataDisplay/GenericCard/styles';
 import { styles as stylesAvatarGroup } from '../components/DataDisplay/AvatarGroup/styles';
 import { styles as stylesCard } from '../components/DataDisplay/Card/styles';
+import { styles as stylesTag } from '../components/DataDisplay/Tag/styles';
 
 import { styles as stylesConfirm } from '../components/Modals/ConfirmModal/styles';
 import { styles as stylesBase } from '../components/Modals/Modal/styles';
@@ -98,6 +99,7 @@ let components = {
     generic: stylesGeneric,
     avatargroup: stylesAvatarGroup,
     card: stylesCard,
+    tag: stylesTag,
   },
   modals: {
     confirm: stylesConfirm,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TextStyle } from 'react-native';
 import { makeStyle } from '../../../hooks/makeStyle';
-type IBaseText = {
+export type IBaseText = {
   title?: string | React.ReactNode;
   children?: React.ReactNode;
   style?: TextStyle | Array<TextStyle>;
@@ -25,9 +25,9 @@ const BaseText: React.FC<IBaseText> = ({
   numberOfLines,
 }) => {
   const styles = useStyle();
-  const props = { numberOfLines, onPress };
+  const propsInner = { numberOfLines, onPress };
   return (
-    <Text style={{ ...styles.default, ...style }} {...props}>
+    <Text style={{ ...styles.default, ...style }} {...propsInner}>
       {title || children}
     </Text>
   );

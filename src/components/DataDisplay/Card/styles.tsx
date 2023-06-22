@@ -9,30 +9,37 @@ export const styles = StyleSheet.create({
     borderColor: colorsDefault['--color-base_cultured'],
     borderWidth: 1,
     borderRadius: 8,
-
-    padding: 10,
     minHeight: 90,
+    padding: 14,
+
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 5,
+    // },
+    // shadowOpacity: 0.05,
+    // shadowRadius: 6.68,
+
+    // elevation: 11,
   },
   left: {
     flexDirection: 'row',
     flex: 1,
     height: '100%',
     justifyContent: 'center',
-
     gap: 14,
+
+
   },
   right: {
     flexDirection: 'row-reverse',
     flex: 1,
     height: '100%',
     justifyContent: 'center',
-
     gap: 14,
   },
   bottom: {
     flexDirection: 'column-reverse',
-    flex: 1,
-    height: '100%',
     justifyContent: 'center',
 
     gap: 14,
@@ -41,7 +48,18 @@ export const styles = StyleSheet.create({
     width: 50,
     height: '100%',
   },
-  info: { flex: 1, gap: 4, flexDirection: 'column', justifyContent: 'center' },
+  infonormal: {
+    flex: 1,
+    gap: 4,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  infoinvert: {
+    flex: 1,
+    gap: 4,
+    flexDirection: 'column-reverse',
+    justifyContent: 'center',
+  },
   title: {
     fontFamily: 'Ubuntu',
     fontSize: 14,
@@ -50,7 +68,7 @@ export const styles = StyleSheet.create({
   description: {
     fontFamily: 'Ubuntu',
     fontSize: 12,
-    color: colorsDefault['--color-base_eerieblack'],
+    color: colorsDefault['--color-base_sonicsilver'],
   },
   buttoncenter: {
     alignItems: 'center',

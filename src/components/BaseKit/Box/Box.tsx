@@ -21,6 +21,7 @@ type TBox = {
   jEnd?: boolean;
   position?: string;
   boxSizing?: string;
+  gap?: number;
   pointerEvents?: 'none' | 'all';
   onPress?: (event: GestureResponderEvent) => void;
   onPressIn?: (event: GestureResponderEvent) => void;
@@ -51,6 +52,7 @@ const Box: FC<PropsWithChildren<TBox>> = (props) => {
       jEnd,
       position = 'relative',
       boxSizing = 'border-box',
+      gap = 0,
       ...attrs
     } = props; //flex
 
@@ -103,6 +105,7 @@ const Box: FC<PropsWithChildren<TBox>> = (props) => {
       ...stylesFlex,
       position,
       boxSizing: boxSizing ? 'border-box' : 'content-box',
+      gap,
     };
 
     const styleGenerator = {

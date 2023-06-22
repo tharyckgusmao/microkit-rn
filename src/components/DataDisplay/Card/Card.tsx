@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import BaseText from '../../../components/BaseKit/BaseText/BaseText';
+import BaseText, { IBaseText } from '../../../components/BaseKit/BaseText/BaseText';
 import Box from '../../../components/BaseKit/Box/Box';
 import FastImage from 'react-native-fast-image';
 import Icon from '../../../components/BaseKit/Icon/Icon';
@@ -11,6 +11,8 @@ import type { TThemeBase } from '../../../helper/theme';
 import type { Source } from 'react-native-fast-image';
 import type { ImageStyle } from 'react-native';
 import type { ViewStyle } from 'react-native';
+import type { TextStyle } from 'react-native';
+import type { TextProps } from 'react-native';
 
 export const useStyle = makeStyle((theme: TThemeBase) => {
   return theme?.components?.display?.card;
@@ -25,8 +27,15 @@ type TCard = {
   resizeMode?: 'contain' | 'cover';
   styleImage?: ImageStyle;
   style?: ViewStyle;
+  stylesWrapper?: ViewStyle;
+  styleTitle?: TextStyle;
+  styleDescription?: TextStyle;
+  propsTitle?: IBaseText;
+  propsDescription?: IBaseText;
   button?: ReactNode | null;
+  titleInText?: boolean;
   buttonMode?: 'center' | 'left' | 'end';
+  infoMode?: 'normal' | 'invert';
   onClick?: () => void;
 };
 
@@ -38,10 +47,17 @@ const Card: FC<TCard> = ({
   showButton = true,
   disabled = true,
   resizeMode = 'contain',
+  stylesWrapper,
   styleImage,
+  styleTitle,
+  propsTitle,
+  styleDescription,
+  propsDescription,
   style,
   button,
   buttonMode = 'center',
+  infoMode = 'normal',
+  titleInText = true,
   onClick,
 }) => {
   const styles = useStyle();
@@ -52,7 +68,7 @@ const Card: FC<TCard> = ({
       disabled={disabled}
       onClick={onClick}
     >
-      <Box style={styles?.[`${mode}`]} flex={1}>
+      <Box style={{ ...styles?.[`${mode}`], ...stylesWrapper }} flex={1}>
         <FastImage
           source={src}
           resizeMode={resizeMode}
@@ -61,17 +77,25 @@ const Card: FC<TCard> = ({
             ...styleImage,
           }}
         />
-        <Box column style={styles?.info}>
+        <Box column style={styles?.[`info${infoMode}`]}>
           {title ? (
-            typeof title === 'string' ? (
-              <BaseText title={title} style={styles?.title} />
+            titleInText ? (
+              <BaseText
+                title={title}
+                {...propsTitle}
+                style={{ ...styles?.title, ...styleTitle }}
+              />
             ) : (
               title
             )
           ) : null}
           {description ? (
             typeof description === 'string' ? (
-              <BaseText title={description} style={styles?.description} />
+              <BaseText
+                title={description}
+                {...propsDescription}
+                style={{ ...styles?.description, ...styleDescription }}
+              />
             ) : (
               description
             )
@@ -79,16 +103,18 @@ const Card: FC<TCard> = ({
         </Box>
       </Box>
 
-      {showButton
-        ? button || (
+      {
+        showButton
+          ? button || (
             <Box row style={styles?.[`button${buttonMode}`]}>
               <Box row style={styles?.buttonCtn} jCenter aCenter>
                 <Icon name="icon_arrowrightbold" style={styles?.icon} />
               </Box>
             </Box>
           )
-        : null}
-    </TouchableOpacity>
+          : null
+      }
+    </TouchableOpacity >
   );
 };
 
