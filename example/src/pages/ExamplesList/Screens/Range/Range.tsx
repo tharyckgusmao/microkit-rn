@@ -1,4 +1,5 @@
 import type { APPTheme } from 'example/src/theme-basic';
+import { theme } from 'example/src/theme-example-one';
 import React from 'react';
 import { Dimensions } from 'react-native';
 import {
@@ -7,6 +8,7 @@ import {
   Button,
   makeStyle,
   Range,
+  ThemeProvider,
 } from 'react-native-microkit-rn';
 import { useDerivedValue, useSharedValue } from 'react-native-reanimated';
 import { ReText } from 'react-native-redash';
@@ -44,6 +46,7 @@ const useStyle = makeStyle((theme: APPTheme) => {
     bottom: {
       backgroundColor: '#fff',
       padding: theme?.base?.spacing?.['06'] || 0,
+      paddingBottom: theme?.base?.spacing?.['07'] * 2|| 0,
     },
     subtitle: {
       fontSize: 14,
@@ -79,8 +82,8 @@ const RangeScreen = () => {
         </Box>
         <ReText text={currenValue || '0'} style={styles?.number} />
       </Box>
-      <Box style={styles?.bottom} gap={40}>
-        <Box gap={20}>
+      <Box style={styles?.bottom} gap={60}>
+        <Box gap={30}>
           <BaseText style={styles.subtitle} title="Monthly contribution" />
           <Box gap={10}>
             <Range
@@ -89,6 +92,7 @@ const RangeScreen = () => {
               sharedValue={value}
               step={1}
               formatter={toCurrency}
+              showLabel={false}
             />
             <BaseText style={styles.subdescription} title="$1000 Max" />
           </Box>
@@ -99,4 +103,8 @@ const RangeScreen = () => {
   );
 };
 
-export default RangeScreen;
+export default () => (
+  <ThemeProvider initialTheme={theme}>
+    <RangeScreen />
+  </ThemeProvider>
+);

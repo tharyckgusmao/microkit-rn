@@ -4,7 +4,6 @@ import { TThemeStructure, defaultTheme } from 'react-native-microkit-rn';
 let customColors = {
   colors: {
     ...defaultTheme.base.colors,
-    '--example-bg-range': '#dad6d0',
   },
 };
 

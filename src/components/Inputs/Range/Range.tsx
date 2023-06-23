@@ -32,6 +32,7 @@ type TRange = {
   range?: boolean;
   rotateAnimation?: boolean;
   showChev?: boolean;
+  showLabel?: boolean;
   sharedValue?: SharedValue<number>;
   onValueChange?: (value: { min: number; max: number }) => void;
   formatter: (value: string) => string | number;
@@ -45,6 +46,7 @@ export const Range: FC<TRange> = ({
   range = false,
   rotateAnimation = false,
   showChev = true,
+  showLabel = true,
   sharedValue,
   onValueChange = () => {},
   formatter = (value) => {
@@ -234,19 +236,23 @@ export const Range: FC<TRange> = ({
       {range && (
         <PanGestureHandler onGestureEvent={gestureHandler}>
           <Animated.View style={[animatedStyle, styles?.thumb]}>
+            {showLabel &&
             <Animated.View style={[opacityStyle, styles?.label]}>
               <ReText text={minLabelText || '0'} style={styles?.labelText} />
               {showChev && <View style={styles?.chev} />}
             </Animated.View>
+            }
           </Animated.View>
         </PanGestureHandler>
       )}
       <PanGestureHandler onGestureEvent={gestureHandler2}>
         <Animated.View style={[animatedStyle2, styles?.thumb]}>
+          {showLabel &&
           <Animated.View style={[opacityStyle2, styles?.label]}>
             <ReText text={maxLabelText || '0'} style={styles?.labelText} />
             {showChev && <View style={styles?.chev} />}
           </Animated.View>
+          }
         </Animated.View>
       </PanGestureHandler>
     </View>
