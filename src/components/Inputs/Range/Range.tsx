@@ -6,6 +6,7 @@ import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, {
   interpolate,
   runOnJS,
+  SharedValue,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useDerivedValue,
@@ -31,7 +32,8 @@ type TRange = {
   range?: boolean;
   rotateAnimation?: boolean;
   showChev?: boolean;
-  onValueChange: (value: { min: number; max: number }) => void;
+  sharedValue?: SharedValue<number>;
+  onValueChange?: (value: { min: number; max: number }) => void;
   formatter: (value: string) => string | number;
 };
 
@@ -43,6 +45,7 @@ export const Range: FC<TRange> = ({
   range = false,
   rotateAnimation = false,
   showChev = true,
+  sharedValue,
   onValueChange = () => {},
   formatter = (value) => {
     'worklet';
@@ -88,16 +91,22 @@ export const Range: FC<TRange> = ({
         }
 
         opacity.value = withTiming(0, { duration: 200 });
-        runOnJS(onValueChange)({
-          min:
-            min +
-            Math.floor(position.value / (sliderWidth / ((max - min) / step))) *
-              step,
-          max:
-            min +
-            Math.floor(position2.value / (sliderWidth / ((max - min) / step))) *
-              step,
-        });
+        if (onValueChange) {
+          runOnJS(onValueChange)({
+            min:
+              min +
+              Math.floor(
+                position.value / (sliderWidth / ((max - min) / step))
+              ) *
+                step,
+            max:
+              min +
+              Math.floor(
+                position2.value / (sliderWidth / ((max - min) / step))
+              ) *
+                step,
+          });
+        }
       },
     });
 
@@ -128,16 +137,18 @@ export const Range: FC<TRange> = ({
         direction.value = withSpring(0);
       }
       opacity2.value = withTiming(0, { duration: 200 });
-      runOnJS(onValueChange)({
-        min:
-          min +
-          Math.floor(position.value / (sliderWidth / ((max - min) / step))) *
-            step,
-        max:
-          min +
-          Math.floor(position2.value / (sliderWidth / ((max - min) / step))) *
-            step,
-      });
+      if (onValueChange) {
+        runOnJS(onValueChange)({
+          min:
+            min +
+            Math.floor(position.value / (sliderWidth / ((max - min) / step))) *
+              step,
+          max:
+            min +
+            Math.floor(position2.value / (sliderWidth / ((max - min) / step))) *
+              step,
+        });
+      }
     },
   });
 
@@ -208,13 +219,13 @@ export const Range: FC<TRange> = ({
     );
   });
   const maxLabelText = useDerivedValue(() => {
-    return formatter(
-      `${
-        min +
-        Math.floor(position2.value / (sliderWidth / ((max - min) / step))) *
-          step
-      }`
-    );
+    let value =
+      min +
+      Math.floor(position2.value / (sliderWidth / ((max - min) / step))) * step;
+    if (sharedValue) {
+      sharedValue.value = value;
+    }
+    return formatter(`${value}`);
   });
   return (
     <View style={[styles?.sliderContainer, { width: sliderWidth }]}>

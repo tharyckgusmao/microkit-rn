@@ -12,7 +12,7 @@ import {
   Tag,
 } from 'react-native-microkit-rn';
 import React from 'react';
-import { theme } from 'example/src/theme';
+import { theme } from 'example/src/theme-basic';
 const DataDisplay: FC = () => {
   let font = require('../../../assets/fonts/ttf/Montserrat-SemiBold.ttf');
   return (

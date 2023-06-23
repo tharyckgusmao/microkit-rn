@@ -6,49 +6,10 @@ import { Divider, Icon, makeStyle } from 'react-native-microkit-rn';
 
 const routes = [
   {
-    title: 'Icons',
-    route: 'Icons',
+    title: 'Range',
+    route: 'Range',
   },
-  {
-    title: 'Input',
-    route: 'Input',
-  },
-  {
-    title: 'Buttons',
-    route: 'Buttons',
-  },
-  {
-    title: 'Data Display',
-    route: 'DataDisplay',
-  },
-  {
-    title: 'Loaders',
-    route: 'Loaders',
-  },
-  {
-    title: 'Transitions',
-    route: 'Transitions',
-  },
-  {
-    title: 'Steps',
-    route: 'Steps',
-  },
-  {
-    title: 'Progress',
-    route: 'Progress',
-  },
-  {
-    title: 'Modals',
-    route: 'Modals',
-  },
-  {
-    title: 'Sliders',
-    route: 'Sliders',
-  },
-  {
-    title: '🍕 Examples',
-    route: 'Examples',
-  },
+
 ];
 
 const useStyle = makeStyle((theme: APPTheme) => {
@@ -69,7 +30,7 @@ const useStyle = makeStyle((theme: APPTheme) => {
   };
 });
 
-const Home = () => {
+const ExamplesList = () => {
   const { navigate } = useNavigation();
   const styles = useStyle();
 
@@ -100,4 +61,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ExamplesList;

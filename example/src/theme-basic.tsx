@@ -1,8 +1,16 @@
 import merge from 'lodash.merge';
 import { TThemeStructure, defaultTheme } from 'react-native-microkit-rn';
 
+let customColors = {
+  colors: {
+    ...defaultTheme.base.colors,
+    '--example-bg-range': '#dad6d0',
+  },
+};
+
 let base = {
   ...defaultTheme.base,
+  ...customColors,
   layout: {
     container: {
       padding: defaultTheme?.base.spacing?.['07'] || 0,
