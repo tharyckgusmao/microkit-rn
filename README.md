@@ -1,31 +1,151 @@
 # react-native-microkit-rn
 
-Micro component collection for react native
+> MIKROTIK-RN is a collection of components focused on high performance with the possibility of using the technologies used in react native, with a focus on production and ease of use.
 
-## Installation
+<br/>
 
-```sh
-npm install react-native-microkit-rn
+![alt text](https://files.fm/thumb_show.php?i=xh3f2dqux)
+
+<br/>
+## Installation (not yet provided!)
+
+For npm users:
+
+```
+npm i @studio-freight/react-lenis
 ```
 
-## Usage
+For yarn users:
 
-```js
-import { multiply } from 'react-native-microkit-rn';
-
-// ...
-
-const result = await multiply(3, 7);
+```
+yarn add @studio-freight/react-lenis
 ```
 
-## Contributing
+<br/>
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+## Purpose
 
-## License
+- Typescript
+- Recent React Native
+- Possibility to customize all components
+- Support a reanimated and Skia
+- Support Expo
+- Headless Components
+- Perfomatic Components
 
-MIT
+> As there is still no quality document, I suggest looking and checking the examples of its use
+
+<br/>
+
+## Features
+
+This projeto is composed of:
+<br/>
+
+`ThemeProvider` – Provider for managing reuse of themes and tokens.
+
+`makeStyle` – Hook for creating themed performance stylesheet.
+
+`useVirtualList` – Virtualized list with search support.
+
+`TThemeBase` – Base theme list.
+
+<br/>
+
+Components list:
+
+| Inputs   | Description                                                             |
+| -------- | ----------------------------------------------------------------------- |
+| Input    | Input component with support for icons, styles, animation.              |
+| checkbox | checkbox component                                                      |
+| select   | Support select via bottomsheet, support search and visualized list      |
+| radio    | radio button component                                                  |
+| otp      | Component for OTP support, with support for errors and number of tokens |
+| range    | Support for major and minor intervals and animations                    |
+| Counter  | Support a counter max and min                                           |
 
 ---
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+| Carousel | Description                           |
+| -------- | ------------------------------------- |
+| Carousel | Suport variations Parallax or Default |
+
+---
+
+| loaders  | Description |
+| -------- | ----------- |
+| dots     |             |
+| skeleton |             |
+
+---
+
+| progress | Description               |
+| -------- | ------------------------- |
+| line     | Suport skia or reanimated |
+
+---
+
+| transitions | Description |
+| ----------- | ----------- |
+| fade        |             |
+| height      |             |
+| opacity     |             |
+
+---
+
+| loaders | Description |
+| ------- | ----------- |
+| worm    |             |
+| dot     |             |
+
+---
+
+| datadisplay     | Description |
+| --------------- | ----------- |
+| avatar          |             |
+| vatar groupping |             |
+| card anatomy    |             |
+| tags            |             |
+| Generic card    |             |
+| Not found Items |             |
+
+---
+
+| buttons    | Description |
+| ---------- | ----------- |
+| generic    |             |
+| backbutton |             |
+| tabs       |             |
+
+---
+
+| modal        | Description |
+| ------------ | ----------- |
+| generic      |             |
+| bottom sheet |             |
+| modal base   |             |
+| confirm      |             |
+
+---
+
+| icons | Description |
+| ----- | ----------- |
+| icons |             |
+
+<br/>
+
+## Video Showcase
+
+<br/>
+
+## Roadmap
+
+- [ ] Docs
+- [ ] Examples
+- [ ] improves new components
+
+<br/>
+
+## Authors
+
+- Tharyck Gusmão
