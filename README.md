@@ -12,13 +12,13 @@
 For npm users:
 
 ```
-npm i @studio-freight/react-lenis
+npm i 
 ```
 
 For yarn users:
 
 ```
-yarn add @studio-freight/react-lenis
+yarn add 
 ```
 
 <br/>
