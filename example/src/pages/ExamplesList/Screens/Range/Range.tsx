@@ -1,4 +1,4 @@
-import type { APPTheme } from 'example/src/theme-basic';
+import type { APPTheme } from 'example/src/theme-example-one';
 import { theme } from 'example/src/theme-example-one';
 import React from 'react';
 import { Dimensions } from 'react-native';
@@ -20,6 +20,7 @@ function toCurrency(value: string | number) {
 
   return '$' + value;
 }
+
 const useStyle = makeStyle((theme: APPTheme) => {
   return {
     container: {
@@ -46,7 +47,7 @@ const useStyle = makeStyle((theme: APPTheme) => {
     bottom: {
       backgroundColor: '#fff',
       padding: theme?.base?.spacing?.['06'] || 0,
-      paddingBottom: theme?.base?.spacing?.['07'] * 2|| 0,
+      paddingBottom: theme?.base?.spacing?.['07'] * 2 || 0,
     },
     subtitle: {
       fontSize: 14,
@@ -57,8 +58,7 @@ const useStyle = makeStyle((theme: APPTheme) => {
     },
   };
 });
-
-//Credits https://dribbble.com/shots/19183570-FeeGoo-Investing-Platform-design-prototype-MVP
+//Credits concept https://dribbble.com/shots/19183570-FeeGoo-Investing-Platform-design-prototype-MVP
 const RangeScreen = () => {
   const styles = useStyle();
   const value = useSharedValue(0);

@@ -9,6 +9,10 @@ const routes = [
     title: 'Range',
     route: 'Range',
   },
+  {
+    title: 'Auth',
+    route: 'Auth',
+  },
 
 ];
 

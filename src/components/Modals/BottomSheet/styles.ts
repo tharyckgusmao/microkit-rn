@@ -16,4 +16,10 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     textTransform: 'uppercase',
   },
+  draggableIcon: {
+    width: 30,
+    height: 4,
+    borderRadius: 12,
+    backgroundColor: '#ccc',
+  },
 });

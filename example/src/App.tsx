@@ -21,6 +21,7 @@ import { theme as themeBasic } from './theme-basic';
 import { IconFont, ThemeProvider } from 'react-native-microkit-rn';
 import ExamplesList from './pages/ExamplesList/ExamplesList';
 import Range from './pages/ExamplesList/Screens/Range/Range';
+import Auth from './pages/ExamplesList/Screens/Auth/Auth';
 const Stack = createNativeStackNavigator();
 
 const Examples = () => {
@@ -39,6 +40,11 @@ const Examples = () => {
       <Stack.Screen
         name="Range"
         component={Range}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Auth"
+        component={Auth}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -23,10 +23,12 @@ import { makeStyle } from '../../../hooks/makeStyle';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BottomSheetModal, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { colorsDefault } from '../../../helper/colors';
+import { View } from 'react-native';
 interface HandleProps extends BottomSheetHandleProps {
   title: string;
   style?: StyleProp<ViewStyle>;
   color: string;
+  draggableColor: string;
   onClose: () => void;
 }
 interface BackDropProps extends BottomSheetBackdropProps {
@@ -76,12 +78,24 @@ export const useStyle = makeStyle((theme: TThemeBase) => {
   return theme?.components?.modals.header;
 });
 export const HeaderList: React.FC<HandleProps> = memo(
-  ({ title, color = colorsDefault['--color-base_lightgray'] }) => {
+  ({
+    title,
+    color = colorsDefault['--color-base_lightgray'],
+    draggableColor = colorsDefault['--color-base_lightgray'],
+  }) => {
     const styles = useStyle();
 
     return (
       <Box style={styles?.ctnHeader} aCenter jCenter>
         {!!title && <BaseText style={styles?.title} title={title} />}
+        {!title && (
+          <View
+            style={{
+              ...styles?.draggableIcon,
+              backgroundColor: draggableColor,
+            }}
+          />
+        )}
         <Divider type="h" spaccingBottom={0} spaccingTop={12} color={color} />
       </Box>
     );
@@ -91,6 +105,7 @@ export const HeaderList: React.FC<HandleProps> = memo(
 type IBottomSheet = {
   show: boolean;
   headerTitle?: string;
+  draggableColor?: string;
   headerSeparateColor?: string;
   children: JSX.Element;
   snapPoints: Array<string | number>;
@@ -100,6 +115,7 @@ type IBottomSheet = {
 export const BottomSheet: FC<IBottomSheet> = ({
   show,
   headerTitle,
+  draggableColor,
   children,
   snapPoints = ['40%', '80%'],
   headerSeparateColor,
@@ -132,7 +148,12 @@ export const BottomSheet: FC<IBottomSheet> = ({
 
   const renderCustomHandle = useCallback((props: any) => {
     return (
-      <HeaderList title={headerTitle} color={headerSeparateColor} {...props} />
+      <HeaderList
+        title={headerTitle}
+        color={headerSeparateColor}
+        draggableColor={draggableColor}
+        {...props}
+      />
     );
   }, []);
   const renderCustomBackDrop = useCallback((props: any) => {

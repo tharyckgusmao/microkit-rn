@@ -28,7 +28,8 @@ const BaseText: React.FC<IBaseText> = ({
   const propsInner = { numberOfLines, onPress };
   return (
     <Text style={{ ...styles.default, ...style }} {...propsInner}>
-      {title || children}
+      {title}
+      {children}
     </Text>
   );
 };

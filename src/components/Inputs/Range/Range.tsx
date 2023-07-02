@@ -234,25 +234,25 @@ export const Range: FC<TRange> = ({
       <View style={[styles?.sliderBack, { width: sliderWidth }]} />
       <Animated.View style={[sliderStyle, styles?.sliderFront]} />
       {range && (
-        <PanGestureHandler onGestureEvent={gestureHandler}>
+        <PanGestureHandler onGestureEvent={gestureHandler} minDist={9}>
           <Animated.View style={[animatedStyle, styles?.thumb]}>
-            {showLabel &&
-            <Animated.View style={[opacityStyle, styles?.label]}>
-              <ReText text={minLabelText || '0'} style={styles?.labelText} />
-              {showChev && <View style={styles?.chev} />}
-            </Animated.View>
-            }
+            {showLabel && (
+              <Animated.View style={[opacityStyle, styles?.label]}>
+                <ReText text={minLabelText || '0'} style={styles?.labelText} />
+                {showChev && <View style={styles?.chev} />}
+              </Animated.View>
+            )}
           </Animated.View>
         </PanGestureHandler>
       )}
-      <PanGestureHandler onGestureEvent={gestureHandler2}>
+      <PanGestureHandler onGestureEvent={gestureHandler2} minDist={9}>
         <Animated.View style={[animatedStyle2, styles?.thumb]}>
-          {showLabel &&
-          <Animated.View style={[opacityStyle2, styles?.label]}>
-            <ReText text={maxLabelText || '0'} style={styles?.labelText} />
-            {showChev && <View style={styles?.chev} />}
-          </Animated.View>
-          }
+          {showLabel && (
+            <Animated.View style={[opacityStyle2, styles?.label]}>
+              <ReText text={maxLabelText || '0'} style={styles?.labelText} />
+              {showChev && <View style={styles?.chev} />}
+            </Animated.View>
+          )}
         </Animated.View>
       </PanGestureHandler>
     </View>

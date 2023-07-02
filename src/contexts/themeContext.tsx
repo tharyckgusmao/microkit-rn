@@ -24,7 +24,6 @@ type TThemeProvider = {
 const ThemeProvider = ({ children, initialTheme }: TThemeProvider) => {
   const [theme] = useState(initialTheme);
   const [uuid] = useState(Math.random().toString(16).substring(4));
-
   return (
     <ThemeContext.Provider value={{ uuid, theme }}>
       {children}
